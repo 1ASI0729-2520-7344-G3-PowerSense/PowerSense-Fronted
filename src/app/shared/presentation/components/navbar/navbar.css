@@ -1,0 +1,116 @@
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.04), 0 1px 0 #EAEAEA;
+  padding: 0 32px;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+  z-index: 10;
+  border-left: 1px solid #EAEAEA;
+  margin-left: 0;
+}
+
+.navbar-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 0.2px;
+  padding-left: 12px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-icon-btn {
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-bell {
+  font-size: 22px;
+  color: #8A8A8A;
+}
+
+.navbar-badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  background: #E74C3C;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 50%;
+  padding: 2px 6px;
+  min-width: 18px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.navbar-avatar-wrapper {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #EAF2FC;
+  color: #4A90E2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+
+.navbar-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.navbar-menu {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(74, 144, 226, 0.10), 0 1px 0 #EAEAEA;
+  min-width: 160px;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.navbar-menu-item {
+  padding: 10px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.navbar-menu-item:hover {
+  background: #EAF2FC;
+  color: #4A90E2;
+}

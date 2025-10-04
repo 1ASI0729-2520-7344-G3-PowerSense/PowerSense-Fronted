@@ -1,0 +1,12 @@
+<mat-card class="ps-card">
+  <div class="ps-card-header">
+    <span class="ps-card-title">Recomendaciones de ahorro</span>
+    <mat-icon class="ps-card-icon" color="primary">lightbulb</mat-icon>
+  </div>
+  <ul class="ps-tips-list">
+    <li class="ps-tip-item" *ngFor="let tip of tips">
+      <mat-icon class="ps-tip-icon" color="accent">check_circle</mat-icon>
+      <span class="ps-tip-text">{{ tip }}</span>
+    </li>
+  </ul>
+</mat-card>

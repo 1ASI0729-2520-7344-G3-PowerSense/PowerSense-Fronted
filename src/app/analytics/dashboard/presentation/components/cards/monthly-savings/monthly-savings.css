@@ -1,0 +1,75 @@
+/* ============================================
+   MONTHLY SAVINGS CARD
+   ============================================ */
+
+.ps-card {
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05) !important;
+  padding: 24px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+  min-height: 160px;
+}
+
+.ps-card:hover {
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.ps-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ps-card-title {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333 !important;
+  margin: 0;
+}
+
+.ps-card-icon {
+  font-size: 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  color: #28A745 !important;
+  font-family: 'Material Icons' !important;
+}
+
+.ps-card-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.ps-metric-value {
+  font-family: Inter, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #28A745 !important;
+  line-height: 1;
+}
+
+.ps-metric-label {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8A8A8A !important;
+}
+
+@media (max-width: 768px) {
+  .ps-card {
+    padding: 20px !important;
+    min-height: 140px;
+  }
+
+  .ps-metric-value {
+    font-size: 32px;
+  }
+}

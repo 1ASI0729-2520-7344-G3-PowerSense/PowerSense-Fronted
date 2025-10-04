@@ -1,0 +1,71 @@
+/* ============================================
+   DEVICE CONTROL CARD
+   ============================================ */
+
+.ps-card {
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05) !important;
+  padding: 24px !important;
+  min-height: 240px;
+  transition: all 0.3s ease;
+}
+
+.ps-card:hover {
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.ps-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ps-card-title {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333 !important;
+}
+
+.ps-card-icon {
+  font-size: 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-family: 'Material Icons' !important;
+}
+
+.ps-device-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ps-device-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #F7F8FA;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.ps-device-item:hover {
+  background: #F0F1F3;
+}
+
+.ps-device-name {
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+}
+
+@media (max-width: 768px) {
+  .ps-card {
+    padding: 20px !important;
+  }
+}

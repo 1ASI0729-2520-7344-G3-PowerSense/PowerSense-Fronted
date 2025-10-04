@@ -1,0 +1,13 @@
+<mat-card class="ps-card">
+  <div class="ps-card-header">
+    <span class="ps-card-title">Últimas alertas</span>
+    <mat-icon class="ps-card-icon" color="primary">notifications</mat-icon>
+  </div>
+  <ul class="ps-alerts-list">
+    <li class="ps-alert-item" *ngFor="let alert of alerts">
+      <mat-icon class="ps-alert-icon" [ngClass]="alert.type">{{ alert.icon }}</mat-icon>
+      <span class="ps-alert-text">{{ alert.message }}</span>
+      <span class="ps-alert-date">{{ alert.date }}</span>
+    </li>
+  </ul>
+</mat-card>

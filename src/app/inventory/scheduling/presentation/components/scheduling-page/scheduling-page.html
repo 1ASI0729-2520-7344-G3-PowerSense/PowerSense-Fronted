@@ -1,0 +1,205 @@
+<div class="scheduling-page">
+  <!-- Columna principal: Programaciones Activas -->
+  <div class="main-content">
+    <!-- Encabezado -->
+    <div class="page-header">
+      <h1 class="page-title">Programación</h1>
+    </div>
+
+    <!-- Tabs de navegación -->
+    <div class="tabs-container">
+      <div class="tab-item active">Programaciones Activas</div>
+    </div>
+
+    <!-- Barra de filtros y búsqueda -->
+    <div class="filters-bar">
+      <mat-form-field class="search-field" appearance="outline">
+        <mat-icon matPrefix>search</mat-icon>
+        <input
+          matInput
+          placeholder="Buscar por dispositivo..."
+          [(ngModel)]="search"
+          (ngModelChange)="onFiltersChange()"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="room-filter" appearance="outline">
+        <mat-icon matPrefix>meeting_room</mat-icon>
+        <mat-select
+          [(ngModel)]="selectedRoom"
+          (selectionChange)="onFiltersChange()"
+          placeholder="Filtrar por habitación"
+        >
+          <mat-option *ngFor="let room of rooms" [value]="room">
+            {{ room }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Lista de programaciones -->
+    <div class="schedules-list" *ngIf="!loading(); else loadingTemplate">
+      <div class="empty-state" *ngIf="schedules().length === 0">
+        <mat-icon>event_busy</mat-icon>
+        <p>No hay programaciones configuradas</p>
+        <span>Utiliza la programación rápida en el panel derecho para comenzar</span>
+      </div>
+
+      <!-- Tarjeta de cada programación -->
+      <div 
+        class="program-card" 
+        *ngFor="let schedule of visibleSchedules" 
+        [class.disabled]="!schedule.enabled"
+        [attr.data-category]="getDeviceCategory(schedule.deviceName)"
+      >
+        <!-- Columna 1: Información del dispositivo -->
+        <div class="device-info">
+          <div class="device-icon-container">
+            <mat-icon class="device-icon">{{getDeviceIcon(schedule.deviceName)}}</mat-icon>
+          </div>
+          <div class="device-details">
+            <h3 class="card-title">{{ schedule.deviceName }}</h3>
+            <p class="card-subtitle">
+              <mat-icon>meeting_room</mat-icon>
+              {{ schedule.roomName }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna 2: Detalles de horarios -->
+        <div class="schedule-details">
+          <div 
+            class="schedule-block"
+            *ngFor="let config of schedule.schedules"
+            [class.on]="config.action === 'on'"
+            [class.off]="config.action === 'off'"
+          >
+            <div class="schedule-status">
+              <mat-icon>{{ config.action === 'on' ? 'power_settings_new' : 'power_off' }}</mat-icon>
+              <span class="schedule-status-text">{{ config.action === 'on' ? 'Encendido' : 'Apagado' }}</span>
+            </div>
+            <div class="schedule-time">{{ formatTime(config.time.hour, config.time.minute) }}</div>
+            <div class="schedule-days">{{ formatDays(config.days) }}</div>
+          </div>
+        </div>
+
+        <!-- Columna 3: Controles -->
+        <div class="schedule-controls">
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="more-button">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-slide-toggle
+            [checked]="schedule.enabled"
+            (change)="toggleScheduleEnabled(schedule)"
+            color="primary"
+          ></mat-slide-toggle>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openEditDialog(schedule)">
+              <mat-icon>edit</mat-icon>
+              <span>Editar horarios</span>
+            </button>
+            <button mat-menu-item (click)="deleteScheduleItem(schedule)">
+              <mat-icon>delete</mat-icon>
+              <span>Eliminar programación</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <!-- Botón Ver Más para programaciones -->
+      <div class="view-more-container" *ngIf="hasMoreSchedules && schedules().length > 0">
+        <button mat-stroked-button class="view-more-button" (click)="showMoreSchedules()">
+          <mat-icon>expand_more</mat-icon>
+          Ver más programaciones ({{ schedules().length - visibleSchedulesCount() }} restantes)
+        </button>
+      </div>
+    </div>
+
+    <ng-template #loadingTemplate>
+      <div class="loading-container">
+        <mat-icon class="loading-icon">hourglass_empty</mat-icon>
+        <p>Cargando programaciones...</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Panel lateral derecho -->
+  <div class="sidebar-panel">
+    <!-- Programación Rápida -->
+    <div class="quick-schedule-section">
+      <h2 class="right-rail-title">Programación Rápida</h2>
+      
+      <div class="quick-presets">
+        <div
+          class="quick-action-card"
+          *ngFor="let preset of quickPresets"
+          (click)="applyQuickPreset(preset.id)"
+        >
+          <div class="quick-icon-container">
+            <mat-icon>{{ preset.icon }}</mat-icon>
+          </div>
+          <div class="quick-info">
+            <div class="quick-name">{{ preset.name }}</div>
+            <div class="quick-desc">{{ preset.description }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="statistics-card">
+      <h2 class="right-rail-title">Estadísticas</h2>
+      
+      <div class="stat-list">
+        <div class="stat-list-item">
+          <span class="stat-label">Dispositivos programados</span>
+          <span class="stat-separator"></span>
+          <span class="statistic-value">{{ stats().totalScheduled }}</span>
+        </div>
+        <div class="stat-list-item">
+          <span class="stat-label">Horas activas/semana</span>
+          <span class="stat-separator"></span>
+          <span class="statistic-value">{{ stats().activeHours }}h</span>
+        </div>
+        <div class="stat-list-item">
+          <span class="stat-label">Ahorro estimado/mes</span>
+          <span class="stat-separator"></span>
+          <span class="statistic-value">{{ stats().estimatedSavings }} kWh</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reglas Inteligentes -->
+    <div class="rules-card">
+      <div class="rules-header">
+        <h2 class="right-rail-title">Reglas Inteligentes</h2>
+        <button mat-icon-button class="add-rule-button">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      
+      <div class="rules-list">
+        <div class="rule-item" *ngFor="let rule of visibleRules">
+          <div class="rule-content">
+            <div class="rule-main">{{ rule.name }}</div>
+            <div class="rule-subtitle">{{ rule.description }}</div>
+          </div>
+          <mat-slide-toggle
+            [checked]="rule.enabled"
+            (change)="toggleRuleEnabled(rule)"
+            color="primary"
+          ></mat-slide-toggle>
+        </div>
+      </div>
+
+      <!-- Botón Ver Más para reglas -->
+      <div class="view-more-rules" *ngIf="hasMoreRules">
+        <button mat-button class="view-more-rules-button" (click)="showMoreRules()">
+          <mat-icon>expand_more</mat-icon>
+          Ver más ({{ rules().length - visibleRulesCount() }})
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

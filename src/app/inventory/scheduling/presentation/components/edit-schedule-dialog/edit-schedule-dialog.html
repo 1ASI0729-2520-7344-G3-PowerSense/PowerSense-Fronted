@@ -1,0 +1,119 @@
+<div class="edit-schedule-dialog">
+  <div class="dialog-header">
+    <h2 mat-dialog-title>
+      <mat-icon>edit_calendar</mat-icon>
+      Editar Programación
+    </h2>
+    <button mat-icon-button class="close-button" (click)="cancel()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content>
+    <!-- Información del dispositivo -->
+    <div class="device-info-section">
+      <div class="info-row">
+        <mat-icon>power</mat-icon>
+        <div>
+          <div class="device-name">{{ data.schedule.deviceName }}</div>
+          <div class="device-room">{{ data.schedule.roomName }}</div>
+        </div>
+      </div>
+      
+      <mat-slide-toggle
+        [(ngModel)]="enabled"
+        color="primary"
+        class="enabled-toggle"
+      >
+        <span>Programación activa</span>
+      </mat-slide-toggle>
+    </div>
+
+    <!-- Lista de horarios -->
+    <div class="schedules-section">
+      <div class="section-header">
+        <h3>Horarios Programados</h3>
+        <button mat-mini-fab color="primary" (click)="addSchedule()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <div class="schedule-list">
+        <div 
+          class="schedule-item"
+          *ngFor="let schedule of schedules(); let i = index"
+          [class.on]="schedule.action === 'on'"
+          [class.off]="schedule.action === 'off'"
+        >
+          <!-- Encabezado del horario -->
+          <div class="schedule-item-header">
+            <div class="action-selector">
+              <button
+                mat-button
+                [class.selected]="schedule.action === 'on'"
+                (click)="setActionOn(i)"
+              >
+                <mat-icon>power_settings_new</mat-icon>
+                Encender
+              </button>
+              <button
+                mat-button
+                [class.selected]="schedule.action === 'off'"
+                (click)="setActionOff(i)"
+              >
+                <mat-icon>power_off</mat-icon>
+                Apagar
+              </button>
+            </div>
+            <button 
+              mat-icon-button 
+              class="delete-button" 
+              (click)="removeSchedule(i)"
+              [disabled]="schedules().length === 1"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+          <!-- Selector de hora -->
+          <div class="time-selector">
+            <mat-form-field appearance="outline">
+              <mat-label>Hora</mat-label>
+              <input
+                matInput
+                type="time"
+                [value]="formatTimeForInput(schedule.time.hour, schedule.time.minute)"
+                (change)="parseTimeFromInput($any($event.target).value, i)"
+              />
+              <mat-icon matPrefix>schedule</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <!-- Selector de días -->
+          <div class="days-selector">
+            <label class="days-label">Días de la semana:</label>
+            <div class="days-chips">
+              <div
+                *ngFor="let day of daysOfWeek"
+                class="day-chip"
+                [class.selected]="isDaySelected(i, day.value)"
+                (click)="toggleDay(i, day.value)"
+              >
+                {{ day.label }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="save()">
+      <mat-icon>save</mat-icon>
+      Guardar Cambios
+    </button>
+  </mat-dialog-actions>
+</div>
+

@@ -1,0 +1,30 @@
+<div class="sidebar-container">
+  <!-- Logo -->
+  <div class="sidebar-logo">
+    <span class="logo-icon">⚡</span>
+    <span class="logo-text">PowerSense</span>
+  </div>
+  <div class="sidebar-logo-divider"></div>
+
+  <!-- Navegación principal -->
+  <nav class="sidebar-nav">
+    <a *ngFor="let item of navItems"
+       [routerLink]="item.route"
+       routerLinkActive="active"
+       [ngClass]="{active: isActive(item.route)}"
+       class="sidebar-nav-item">
+      <span *ngIf="item.icon" class="sidebar-nav-icon">{{item.icon}}</span>
+      <span class="sidebar-nav-label">{{item.label}}</span>
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <div class="upgrade-card">
+      <div class="upgrade-title">Upgrade a Pro</div>
+      <div class="upgrade-desc">Desbloquea funciones avanzadas y soporte premium.</div>
+      <a [routerLink]="'/upgrade'" class="upgrade-btn">Mejorar ahora</a>
+    </div>
+    <div class="sidebar-branding">PowerSense v1.0.0</div>
+  </div>
+</div>

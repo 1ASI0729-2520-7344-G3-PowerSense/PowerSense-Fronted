@@ -1,0 +1,41 @@
+<mat-card class="toolbar-card">
+  <div class="toolbar">
+    <div class="left">
+      <input class="search" placeholder="Buscar dispositivos o habitaciones" [ngModel]="search" (ngModelChange)="searchChange.emit($event)" />
+      <select class="select" [ngModel]="selectedCategory" (ngModelChange)="selectedCategoryChange.emit($event)">
+        <option *ngFor="let c of categories" [ngValue]="c.value">{{ c.label }}</option>
+      </select>
+      <select class="select" [ngModel]="selectedStatus" (ngModelChange)="selectedStatusChange.emit($event)">
+        <option *ngFor="let s of statuses" [ngValue]="s.value">{{ s.label }}</option>
+      </select>
+      <select class="select" [ngModel]="sortBy" (ngModelChange)="sortByChange.emit($event)">
+        <option *ngFor="let f of sortFields" [ngValue]="f.value">Ordenar por {{ f.label }}</option>
+      </select>
+      <button mat-stroked-button (click)="sortDirChange.emit(sortDir==='asc' ? 'desc' : 'asc')">
+        <mat-icon>swap_vert</mat-icon>
+        {{ sortDir==='asc' ? 'Asc' : 'Desc' }}
+      </button>
+    </div>
+    <div class="right">
+      <button mat-stroked-button color="warn" (click)="setAllInactive.emit()">
+        <mat-icon>power_off</mat-icon>
+        Apagar Todo
+      </button>
+      <button mat-flat-button color="primary" (click)="setAllActive.emit()">
+        <mat-icon>play_arrow</mat-icon>
+        Encender Todo
+      </button>
+      <button mat-stroked-button (click)="export.emit()">
+        <mat-icon>download</mat-icon>
+        Exportar
+      </button>
+      <label mat-stroked-button class="import-label">
+        <mat-icon>upload</mat-icon>
+        Importar
+        <input type="file" accept="application/json" (change)="import.emit($event)" hidden />
+      </label>
+    </div>
+  </div>
+</mat-card>
+
+

@@ -1,0 +1,33 @@
+<mat-card class="device-card">
+  <div class="card-header">
+    <div class="icon" [style.background]="deviceCategoryColor(device.category)">
+      <mat-icon>{{ deviceCategoryIcon(device.category) }}</mat-icon>
+    </div>
+    <span class="status" [class.active]="device.status==='active'" [class.inactive]="device.status==='inactive'">{{ device.status==='active' ? 'Activo' : 'Inactivo' }}</span>
+  </div>
+
+  <div class="card-body">
+    <div class="name">{{ device.name }}</div>
+    <div class="location">{{ device.location.roomName }}</div>
+    <div class="consumption">
+      <div class="row">
+        <div class="label">Consumo</div>
+        <div class="value">{{ formatPower(device.power.watts) }}</div>
+      </div>
+      <div class="bar-line">
+        <div class="bar-fill" [style.width]="percentWidth(device.power.watts)" [style.background]="deviceCategoryColor(device.category)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="actions">
+      <button mat-stroked-button color="basic" (click)="onConfigure()">Configurar</button>
+      <mat-slide-toggle color="primary" [checked]="device.status==='active'" (change)="onToggle()">
+        {{ device.status==='active' ? 'Encendido' : 'Apagado' }}
+      </mat-slide-toggle>
+    </div>
+  </div>
+</mat-card>
+
+

@@ -1,0 +1,64 @@
+<div class="page">
+  <div class="page-header">
+    <div class="title">
+      <h1>Dispositivos</h1>
+      <p class="subtitle">Gestiona tus dispositivos por habitación y categoría</p>
+    </div>
+  </div>
+
+  <div class="summary">
+    <mat-card class="metric">
+      <div class="icon" style="background:#2F80ED;"><mat-icon>memory</mat-icon></div>
+      <div class="text"><div class="label">Dispositivos</div><div class="value">{{ metrics.total }}</div></div>
+    </mat-card>
+    <mat-card class="metric">
+      <div class="icon" style="background:#27AE60;"><mat-icon>power</mat-icon></div>
+      <div class="text"><div class="label">Activos</div><div class="value">{{ metrics.active }}</div></div>
+    </mat-card>
+    <mat-card class="metric">
+      <div class="icon" style="background:#BDBDBD;"><mat-icon>power_off</mat-icon></div>
+      <div class="text"><div class="label">Inactivos</div><div class="value">{{ metrics.inactive }}</div></div>
+    </mat-card>
+    <mat-card class="metric">
+      <div class="icon" style="background:#F2994A;"><mat-icon>bolt</mat-icon></div>
+      <div class="text"><div class="label">Consumo total</div><div class="value">{{ metrics.totalWatts }} W</div></div>
+    </mat-card>
+  </div>
+
+  <app-devices-toolbar
+    [search]="search"
+    [categories]="categories"
+    [statuses]="statuses"
+    [sortFields]="sortFields"
+    [selectedCategory]="selectedCategory"
+    [selectedStatus]="selectedStatus"
+    [sortBy]="sortBy"
+    [sortDir]="sortDir"
+    (searchChange)="search=$event; onFiltersChange()"
+    (selectedCategoryChange)="selectedCategory=$event; onFiltersChange()"
+    (selectedStatusChange)="selectedStatus=$event; onFiltersChange()"
+    (sortByChange)="sortBy=$event; onFiltersChange()"
+    (sortDirChange)="sortDir=$event; onFiltersChange()"
+    (export)="onExport()"
+    (import)="onImportFileChanged($event)"
+    (setAllActive)="setAll('active')"
+    (setAllInactive)="setAll('inactive')"
+  ></app-devices-toolbar>
+  <!-- grilla de dispositivos -->
+  <div class="devices-grid">
+    <app-device *ngFor="let d of devices() | slice:0:visibleCount()" [device]="d" (toggle)="toggleDevice($event)"></app-device>
+  </div>
+
+  <div class="show-more" *ngIf="visibleCount() < devices().length">
+    <button mat-stroked-button (click)="showMore()">Ver más</button>
+  </div>
+
+  <h2 class="section-title">Control por habitación</h2>
+  <app-rooms
+    [rooms]="rooms"
+    (setRoomActive)="setRoom($event, 'active')"
+    (setRoomInactive)="setRoom($event, 'inactive')"
+  ></app-rooms>
+</div>
+
+

@@ -1,0 +1,102 @@
+/* ============================================
+   REALTIME CONSUMPTION CARD
+   ============================================ */
+
+.ps-card {
+  background: var(--bg-paper, #FFFFFF);
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+  min-height: 160px;
+}
+
+.ps-card:hover {
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Header de la card */
+.ps-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ps-card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary, #333333) !important;
+  margin: 0;
+}
+
+.ps-card-icon {
+  font-size: 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  color: var(--primary-main, #4A90E2) !important;
+  font-family: 'Material Icons' !important;
+}
+
+/* Métrica principal */
+.ps-card-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.ps-metric-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--primary-main, #4A90E2) !important;
+  line-height: 1;
+}
+
+.ps-metric-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary, #8A8A8A) !important;
+}
+
+/* Estado/indicador adicional */
+.ps-card-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary, #8A8A8A);
+}
+
+.ps-card-status mat-icon {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.ps-card-status.positive {
+  color: var(--success, #28A745) !important;
+}
+
+.ps-card-status.negative {
+  color: var(--danger, #EB5757) !important;
+}
+
+.ps-card-status.warning {
+  color: var(--warning, #F2C94C) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ps-card {
+    padding: 20px;
+    min-height: 140px;
+  }
+
+  .ps-metric-value {
+    font-size: 32px;
+  }
+}

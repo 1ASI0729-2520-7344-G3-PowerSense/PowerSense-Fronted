@@ -1,0 +1,17 @@
+<mat-card class="ps-chart-card">
+  <div class="ps-chart-header">
+    <span class="ps-chart-title">Comparativo de consumo</span>
+    <mat-form-field appearance="outline" class="ps-period-selector">
+      <mat-label>Periodo</mat-label>
+      <mat-select [(ngModel)]="selectedPeriod">
+        <mat-option value="3m">Últimos 3 meses</mat-option>
+        <mat-option value="6m">Últimos 6 meses</mat-option>
+        <mat-option value="12m">Últimos 12 meses</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="ps-chart-content">
+    <!-- Aquí iría el gráfico comparativo, placeholder por ahora -->
+    <div class="ps-chart-placeholder">[Gráfico comparativo aquí]</div>
+  </div>
+</mat-card>

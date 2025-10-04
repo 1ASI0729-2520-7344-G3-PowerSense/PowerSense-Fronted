@@ -1,0 +1,692 @@
+{
+  "devices": [
+    {
+      "id": "dev-1",
+      "name": "Lámpara de Sala",
+      "category": "light",
+      "status": "active",
+      "location": {
+        "roomId": "room-living",
+        "roomName": "Sala"
+      },
+      "power": {
+        "watts": 12
+      }
+    },
+    {
+      "id": "dev-2",
+      "name": "Aire Acondicionado",
+      "category": "ac",
+      "status": "active",
+      "location": {
+        "roomId": "room-bedroom",
+        "roomName": "Dormitorio"
+      },
+      "power": {
+        "watts": 900
+      }
+    },
+    {
+      "id": "dev-3",
+      "name": "Televisor 55\"",
+      "category": "tv",
+      "status": "active",
+      "location": {
+        "roomId": "room-living",
+        "roomName": "Sala"
+      },
+      "power": {
+        "watts": 120
+      }
+    },
+    {
+      "id": "dev-4",
+      "name": "Refrigerador",
+      "category": "refrigerator",
+      "status": "active",
+      "location": {
+        "roomId": "room-kitchen",
+        "roomName": "Cocina"
+      },
+      "power": {
+        "watts": 150
+      }
+    },
+    {
+      "id": "dev-5",
+      "name": "Calefacción",
+      "category": "heating",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-bedroom",
+        "roomName": "Dormitorio"
+      },
+      "power": {
+        "watts": 800
+      }
+    },
+    {
+      "id": "dev-6",
+      "name": "Computadora",
+      "category": "computer",
+      "status": "active",
+      "location": {
+        "roomId": "room-office",
+        "roomName": "Oficina"
+      },
+      "power": {
+        "watts": 65
+      }
+    },
+    {
+      "id": "dev-7",
+      "name": "Ventilador de Techo",
+      "category": "fan",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-bedroom",
+        "roomName": "Dormitorio"
+      },
+      "power": {
+        "watts": 70
+      }
+    },
+    {
+      "id": "dev-8",
+      "name": "Lavadora",
+      "category": "washing-machine",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-laundry",
+        "roomName": "Lavandería"
+      },
+      "power": {
+        "watts": 500
+      }
+    },
+    {
+      "id": "dev-9",
+      "name": "Microondas",
+      "category": "microwave",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-kitchen",
+        "roomName": "Cocina"
+      },
+      "power": {
+        "watts": 1100
+      }
+    },
+    {
+      "id": "dev-10",
+      "name": "Consola de Videojuegos",
+      "category": "console",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-living",
+        "roomName": "Sala"
+      },
+      "power": {
+        "watts": 200
+      }
+    },
+    {
+      "id": "dev-11",
+      "name": "Impresora",
+      "category": "printer",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-office",
+        "roomName": "Oficina"
+      },
+      "power": {
+        "watts": 45
+      }
+    },
+    {
+      "id": "dev-12",
+      "name": "Secadora de Ropa",
+      "category": "dryer",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-laundry",
+        "roomName": "Lavandería"
+      },
+      "power": {
+        "watts": 3000
+      }
+    },
+    {
+      "id": "dev-13",
+      "name": "Horno Eléctrico",
+      "category": "oven",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-kitchen",
+        "roomName": "Cocina"
+      },
+      "power": {
+        "watts": 1500
+      }
+    },
+    {
+      "id": "dev-14",
+      "name": "Cafetera",
+      "category": "coffee-maker",
+      "status": "active",
+      "location": {
+        "roomId": "room-kitchen",
+        "roomName": "Cocina"
+      },
+      "power": {
+        "watts": 800
+      }
+    },
+    {
+      "id": "dev-15",
+      "name": "Lámpara de Noche",
+      "category": "light",
+      "status": "active",
+      "location": {
+        "roomId": "room-bedroom",
+        "roomName": "Dormitorio"
+      },
+      "power": {
+        "watts": 7
+      }
+    },
+    {
+      "id": "dev-16",
+      "name": "Calentador de Agua",
+      "category": "water-heater",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-bathroom",
+        "roomName": "Baño"
+      },
+      "power": {
+        "watts": 4500
+      }
+    },
+    {
+      "id": "dev-17",
+      "name": "Equipo de Sonido",
+      "category": "sound-system",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-living",
+        "roomName": "Sala"
+      },
+      "power": {
+        "watts": 80
+      }
+    },
+    {
+      "id": "dev-18",
+      "name": "Lámpara del Comedor",
+      "category": "light",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-dining",
+        "roomName": "Comedor"
+      },
+      "power": {
+        "watts": 40
+      }
+    },
+    {
+      "id": "dev-19",
+      "name": "Puerta de Garaje",
+      "category": "motor",
+      "status": "inactive",
+      "location": {
+        "roomId": "room-garage",
+        "roomName": "Garaje"
+      },
+      "power": {
+        "watts": 350
+      }
+    },
+    {
+      "id": "dev-20",
+      "name": "Luz del Balcón",
+      "category": "light",
+      "status": "active",
+      "location": {
+        "roomId": "room-balcony",
+        "roomName": "Balcón"
+      },
+      "power": {
+        "watts": 15
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "id": "room-living",
+      "name": "Sala"
+    },
+    {
+      "id": "room-bedroom",
+      "name": "Dormitorio"
+    },
+    {
+      "id": "room-kitchen",
+      "name": "Cocina"
+    },
+    {
+      "id": "room-office",
+      "name": "Oficina"
+    },
+    {
+      "id": "room-laundry",
+      "name": "Lavandería"
+    },
+    {
+      "id": "room-dining",
+      "name": "Comedor"
+    },
+    {
+      "id": "room-garage",
+      "name": "Garaje"
+    },
+    {
+      "id": "room-bathroom",
+      "name": "Baño"
+    },
+    {
+      "id": "room-balcony",
+      "name": "Balcón"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "sch-1",
+      "deviceId": "dev-1",
+      "deviceName": "Lámpara de Sala",
+      "roomName": "Sala",
+      "enabled": false,
+      "schedules": [
+        {
+          "action": "on",
+          "time": {
+            "hour": 18,
+            "minute": 0
+          },
+          "days": [
+            "wednesday",
+            "saturday"
+          ]
+        },
+        {
+          "action": "off",
+          "time": {
+            "hour": 23,
+            "minute": 0
+          },
+          "days": [
+            "wednesday",
+            "saturday"
+          ]
+        }
+      ],
+      "createdAt": "2025-01-15T10:00:00.000Z",
+      "updatedAt": "2025-10-04T15:23:09.394Z"
+    },
+    {
+      "id": "sch-2",
+      "deviceId": "dev-2",
+      "deviceName": "Aire Acondicionado",
+      "roomName": "Dormitorio",
+      "enabled": true,
+      "schedules": [
+        {
+          "action": "on",
+          "time": {
+            "hour": 22,
+            "minute": 30
+          },
+          "days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ]
+        },
+        {
+          "action": "off",
+          "time": {
+            "hour": 7,
+            "minute": 0
+          },
+          "days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ]
+        }
+      ],
+      "createdAt": "2025-01-20T12:00:00.000Z",
+      "updatedAt": "2025-10-04T15:30:14.680Z"
+    },
+    {
+      "id": "sch-3",
+      "deviceId": "dev-3",
+      "deviceName": "Televisor 55\"",
+      "roomName": "Sala",
+      "enabled": false,
+      "schedules": [
+        {
+          "action": "off",
+          "time": {
+            "hour": 0,
+            "minute": 0
+          },
+          "days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday",
+            "saturday",
+            "sunday"
+          ]
+        }
+      ],
+      "createdAt": "2025-02-01T14:00:00.000Z",
+      "updatedAt": "2025-10-04T15:23:06.085Z"
+    },
+    {
+      "id": "sch-4",
+      "deviceId": "dev-5",
+      "deviceName": "Calefacción",
+      "roomName": "Dormitorio",
+      "enabled": true,
+      "schedules": [
+        {
+          "action": "on",
+          "time": {
+            "hour": 21,
+            "minute": 0
+          },
+          "days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ]
+        },
+        {
+          "action": "off",
+          "time": {
+            "hour": 6,
+            "minute": 30
+          },
+          "days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ]
+        }
+      ],
+      "createdAt": "2025-02-05T16:00:00.000Z",
+      "updatedAt": "2025-02-05T16:00:00.000Z"
+    },
+    {
+      "id": "sch-5",
+      "deviceId": "dev-16",
+      "deviceName": "Calentador de Agua",
+      "roomName": "Baño",
+      "enabled": true,
+      "schedules": [
+        {
+          "action": "on",
+          "time": {
+            "hour": 5,
+            "minute": 30
+          },
+          "days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ]
+        },
+        {
+          "action": "off",
+          "time": {
+            "hour": 7,
+            "minute": 0
+          },
+          "days": [
+            "monday",
+            "tuesday",
+            "wednesday",
+            "thursday",
+            "friday"
+          ]
+        }
+      ],
+      "createdAt": "2025-03-10T08:00:00.000Z",
+      "updatedAt": "2025-03-11T09:30:00.000Z"
+    },
+    {
+      "id": "sch-6",
+      "deviceId": "dev-20",
+      "deviceName": "Luz del Balcón",
+      "roomName": "Balcón",
+      "enabled": true,
+      "schedules": [
+        {
+          "action": "on",
+          "time": {
+            "hour": 19,
+            "minute": 0
+          },
+          "days": [
+            "saturday",
+            "sunday"
+          ]
+        },
+        {
+          "action": "off",
+          "time": {
+            "hour": 23,
+            "minute": 45
+          },
+          "days": [
+            "saturday",
+            "sunday"
+          ]
+        }
+      ],
+      "createdAt": "2025-04-01T18:00:00.000Z",
+      "updatedAt": "2025-04-01T18:00:00.000Z"
+    },
+    {
+      "id": "sch-7",
+      "deviceId": "dev-18",
+      "deviceName": "Lámpara del Comedor",
+      "roomName": "Comedor",
+      "enabled": false,
+      "schedules": [
+        {
+          "action": "on",
+          "time": {
+            "hour": 20,
+            "minute": 0
+          },
+          "days": [
+            "friday",
+            "saturday"
+          ]
+        },
+        {
+          "action": "off",
+          "time": {
+            "hour": 22,
+            "minute": 0
+          },
+          "days": [
+            "friday",
+            "saturday"
+          ]
+        }
+      ],
+      "createdAt": "2025-05-20T21:00:00.000Z",
+      "updatedAt": "2025-10-04T15:05:02.046Z"
+    }
+  ],
+  "schedules-stats": {
+    "totalScheduled": 5,
+    "activeHours": 210,
+    "estimatedSavings": 78.2
+  },
+  "schedule-rules": [
+    {
+      "id": "rule-1",
+      "type": "night_mode",
+      "name": "Modo Nocturno",
+      "description": "Apaga luces innecesarias automáticamente por la noche",
+      "enabled": true,
+      "priority": 1,
+      "conditions": [
+        {
+          "type": "time_range",
+          "value": {
+            "start": "23:30",
+            "end": "06:00"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "type": "turn_off_category",
+          "category": "light",
+          "excludeDeviceIds": [
+            "dev-15"
+          ],
+          "excludeRoomIds": []
+        }
+      ]
+    },
+    {
+      "id": "rule-2",
+      "type": "energy_saving",
+      "name": "Ahorro de Energía",
+      "description": "Ajusta el consumo según patrones de uso",
+      "enabled": true,
+      "priority": 2,
+      "conditions": [
+        {
+          "type": "energy_threshold",
+          "value": 2500
+        }
+      ],
+      "actions": [
+        {
+          "type": "dim_category",
+          "category": "light",
+          "value": 50
+        }
+      ]
+    },
+    {
+      "id": "rule-3",
+      "type": "away_mode",
+      "name": "Modo Ausente",
+      "description": "Apaga todos los dispositivos cuando no hay nadie en casa",
+      "enabled": false,
+      "priority": 3,
+      "conditions": [
+        {
+          "type": "no_motion",
+          "value": 60
+        }
+      ],
+      "actions": [
+        {
+          "type": "turn_off_all",
+          "excludeDeviceIds": [
+            "dev-4"
+          ],
+          "excludeRoomIds": []
+        }
+      ]
+    },
+    {
+      "id": "rule-4",
+      "type": "welcome_home",
+      "name": "Bienvenida a Casa",
+      "description": "Enciende luces clave al llegar a casa por la tarde/noche",
+      "enabled": false,
+      "priority": 4,
+      "conditions": [
+        {
+          "type": "time_range",
+          "value": {
+            "start": "18:00",
+            "end": "23:00"
+          }
+        },
+        {
+          "type": "motion_detected",
+          "roomIds": [
+            "room-living"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": "turn_on",
+          "deviceIds": [
+            "dev-1"
+          ],
+          "roomIds": []
+        }
+      ]
+    },
+    {
+      "id": "rule-5",
+      "type": "peak_hours_optimization",
+      "name": "Optimización Horas Punta",
+      "description": "Evita el uso de aparatos de alto consumo en horas punta",
+      "enabled": true,
+      "priority": 1,
+      "conditions": [
+        {
+          "type": "time_range",
+          "value": {
+            "start": "19:00",
+            "end": "21:00"
+          }
+        }
+      ],
+      "actions": [
+        {
+          "type": "disable_category",
+          "category": "dryer",
+          "deviceIds": [],
+          "roomIds": []
+        },
+        {
+          "type": "disable_category",
+          "category": "oven",
+          "deviceIds": [],
+          "roomIds": []
+        }
+      ]
+    }
+  ]
+}

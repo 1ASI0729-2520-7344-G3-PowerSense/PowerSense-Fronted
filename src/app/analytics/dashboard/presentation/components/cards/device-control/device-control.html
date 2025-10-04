@@ -1,0 +1,12 @@
+<mat-card class="ps-card">
+  <div class="ps-card-header">
+    <span class="ps-card-title">Control de dispositivos</span>
+    <mat-icon class="ps-card-icon" color="primary">power_settings_new</mat-icon>
+  </div>
+  <div class="ps-device-list">
+    <div class="ps-device-item" *ngFor="let device of devices">
+      <span class="ps-device-name">{{ device.name }}</span>
+      <mat-slide-toggle color="accent" [(ngModel)]="device.on">{{ device.on ? 'Encendido' : 'Apagado' }}</mat-slide-toggle>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,12 @@
+{
+  "/api/devices": "/devices",
+  "/api/devices/:id": "/devices/:id",
+  "/api/rooms": "/rooms",
+  "/api/rooms/:id": "/rooms/:id",
+  "/api/schedules": "/schedules",
+  "/api/schedules/:id": "/schedules/:id",
+  "/api/schedules-stats": "/schedules-stats",
+  "/api/schedule-rules": "/schedule-rules",
+  "/api/schedule-rules/:id": "/schedule-rules/:id"
+}
+

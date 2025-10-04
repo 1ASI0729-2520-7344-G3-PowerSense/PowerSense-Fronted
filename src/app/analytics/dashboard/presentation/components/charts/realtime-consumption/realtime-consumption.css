@@ -1,0 +1,74 @@
+/* ============================================
+   REALTIME CONSUMPTION CHART
+   ============================================ */
+
+.ps-chart-card {
+  background: #FFFFFF !important;
+  border-radius: 16px !important;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05) !important;
+  padding: 24px !important;
+  min-height: 320px;
+  transition: all 0.3s ease;
+}
+
+.ps-chart-card:hover {
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.ps-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ps-chart-title {
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333 !important;
+}
+
+.ps-segmented-control {
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ps-chart-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+}
+
+.ps-chart-placeholder {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F7F8FA;
+  border-radius: 12px;
+  color: #8A8A8A;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .ps-chart-card {
+    padding: 20px !important;
+    min-height: 280px;
+  }
+
+  .ps-chart-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ps-chart-content {
+    min-height: 200px;
+  }
+}

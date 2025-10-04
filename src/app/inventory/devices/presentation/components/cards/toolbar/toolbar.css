@@ -1,0 +1,43 @@
+.toolbar-card { padding: 16px; border-radius: var(--ps-radius-large); box-shadow: var(--ps-shadow-subtle); background: var(--ps-bg-paper); }
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.left, .right { display: flex; gap: 12px; flex-wrap: wrap; }
+.search { padding: 10px 16px; border-radius: var(--ps-radius-small); border: 1px solid var(--ps-input-border); background: var(--ps-bg-paper); }
+.select { padding: 10px 16px; border-radius: var(--ps-radius-small); border: 1px solid var(--ps-input-border); background: var(--ps-bg-paper); }
+.import-label { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+
+/* Button design system bindings */
+.toolbar-card .mat-mdc-stroked-button {
+  border-color: var(--ps-input-border);
+  color: var(--ps-text-primary);
+  background: var(--ps-bg-paper);
+  border-radius: var(--ps-radius-small);
+  min-height: 36px;
+  padding: 0 16px;
+  font-weight: 500;
+}
+.toolbar-card .mat-mdc-stroked-button:hover {
+  background: rgba(0,0,0,0.02);
+}
+.toolbar-card .mat-mdc-stroked-button.mat-warn {
+  border-color: var(--ps-action-danger);
+  color: var(--ps-action-danger);
+}
+.toolbar-card .mat-mdc-unelevated-button.mat-primary {
+  background: var(--ps-action-primary);
+  color: var(--ps-text-on-action);
+  border-radius: var(--ps-radius-small);
+  min-height: 36px;
+  padding: 0 16px;
+  font-weight: 500;
+}
+.toolbar-card .mat-mdc-unelevated-button.mat-primary:hover {
+  filter: brightness(0.97);
+}
+
+.import-label {
+  border: 1px solid var(--ps-input-border);
+  background: var(--ps-bg-paper);
+  color: var(--ps-text-primary);
+  border-radius: var(--ps-radius-small);
+}
+

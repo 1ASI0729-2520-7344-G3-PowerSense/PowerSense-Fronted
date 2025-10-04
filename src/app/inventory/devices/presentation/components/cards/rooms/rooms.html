@@ -1,0 +1,36 @@
+<div class="rooms">
+  <mat-card class="room-card" *ngFor="let r of rooms">
+    <div class="room-header">
+      <div class="room-info">
+        <div class="icon" [style.background]="roomColor(r.roomName)"><mat-icon>{{ roomIcon(r.roomName) }}</mat-icon></div>
+        <div class="text">
+          <div class="name">{{ r.roomName }}</div>
+          <div class="sub">{{ r.devices.length }} dispositivos activos</div>
+        </div>
+      </div>
+      <div class="room-actions">
+        <button mat-stroked-button (click)="setRoomInactive.emit(r.roomId)">
+          <mat-icon>power_off</mat-icon>
+          Apagar todo
+        </button>
+        <button mat-flat-button color="primary" (click)="setRoomActive.emit(r.roomId)">
+          <mat-icon>play_arrow</mat-icon>
+          Encender todo
+        </button>
+      </div>
+    </div>
+    <div class="room-footer">
+      <div class="consumption">
+        <div class="row">
+          <div class="label">Consumo total</div>
+          <div class="value">{{ formatPower(r.totalWatts) }}</div>
+        </div>
+        <div class="bar-line">
+          <div class="bar-fill" [style.width]="(r.totalWatts > 100 ? 100 : r.totalWatts) + '%'" style="background: var(--ps-cat-heating)"></div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+

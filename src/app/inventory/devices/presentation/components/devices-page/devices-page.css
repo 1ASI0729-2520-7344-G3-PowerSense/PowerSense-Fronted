@@ -1,0 +1,218 @@
+.page app-devices-toolbar {
+  display: block;
+  margin-bottom: 24px;
+}
+.page {
+  padding: 0; /* padding viene del layout */
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ps-text-primary);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.title h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--ps-text-secondary);
+  margin: 0;
+}
+
+.actions .search {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
+  background: #FFFFFF;
+}
+.actions { display: flex; gap: 12px; }
+.actions .select {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #E0E0E0;
+  background: #FFFFFF;
+}
+
+.devices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.show-more { display: flex; justify-content: center; margin-top: 16px; }
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.summary .metric { display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--ps-bg-paper); border-radius: var(--ps-radius-large); box-shadow: var(--ps-shadow-subtle); }
+.summary .metric .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #FFFFFF;
+}
+.summary .metric .text .label { font-size: 14px; color: var(--ps-text-secondary); }
+.summary .metric .text .value { font-size: 22px; font-weight: 700; }
+
+.rooms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+
+.section-title {
+  margin: 32px 0 16px 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ps-text-primary);
+}
+
+@media (max-width: 1200px) {
+  .devices-grid { grid-template-columns: repeat(2, 1fr); }
+  .rooms { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .summary { grid-template-columns: 1fr 1fr; }
+  .devices-grid { grid-template-columns: 1fr; }
+  .rooms { grid-template-columns: 1fr; }
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.toolbar-card { position: sticky; top: 8px; z-index: 5; margin-bottom: 24px; }
+.toolbar .left, .toolbar .right {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.room-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.room-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.room-info { display: flex; align-items: center; gap: 12px; }
+.room-info .text .name { font-size: 16px; font-weight: 500; }
+.room-info .text .sub { font-size: 12px; color: #8A8A8A; }
+.room-actions { display: flex; gap: 8px; }
+
+.room-footer { margin-top: -8px; }
+
+.device-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: white;
+}
+
+.status {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.status.active {
+  background: #28A745;
+  color: #FFFFFF;
+}
+.status.inactive {
+  background: #BDBDBD;
+  color: #FFFFFF;
+}
+
+.card-body .name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.card-body .location {
+  font-size: 12px;
+  color: #8A8A8A;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.consumption {
+  display: grid;
+  grid-template-columns: auto 120px auto;
+  align-items: center;
+  gap: 8px;
+}
+.consumption .label { font-size: 12px; color: #8A8A8A; }
+.consumption .value { font-size: 12px; font-weight: 500; }
+.consumption .bar {
+  width: 120px;
+  height: 4px;
+  background: #EAEAEA;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.consumption .fill {
+  height: 100%;
+  width: 0;
+  background: #2F80ED;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.btn.primary {
+  background: #28A745;
+  color: #FFFFFF;
+}
+.btn.danger {
+  background: #EB5757;
+  color: #FFFFFF;
+}
+.btn.secondary {
+  background: #FFFFFF;
+  color: #333333;
+  border: 1px solid #E0E0E0;
+}
+
+

@@ -1,0 +1,26 @@
+<div class="ps-dashboard-layout">
+  <!-- Primera fila: 4 cards -->
+  <div class="ps-dashboard-row ps-dashboard-row-cards">
+    <ng-content select="app-realtime-consumption-card"></ng-content>
+    <ng-content select="app-estimated-costs"></ng-content>
+    <ng-content select="app-monthly-savings"></ng-content>
+    <ng-content select="app-efficiency"></ng-content>
+  </div>
+
+  <!-- Segunda fila: 2 gráficos -->
+  <div class="ps-dashboard-row ps-dashboard-row-charts">
+    <ng-content select="app-realtime-consumption-chart"></ng-content>
+    <ng-content select="app-comparative"></ng-content>
+  </div>
+
+  <!-- Tercera fila: 2 cards -->
+  <div class="ps-dashboard-row ps-dashboard-row-double">
+    <ng-content select="app-device-control"></ng-content>
+    <ng-content select="app-saving-tips"></ng-content>
+  </div>
+
+  <!-- Cuarta fila: 1 card -->
+  <div class="ps-dashboard-row ps-dashboard-row-full">
+    <ng-content select="app-recent-alerts"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,281 @@
+/* ============================================
+   EDIT SCHEDULE DIALOG
+   ============================================ */
+
+.edit-schedule-dialog {
+  width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header del diálogo */
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #EAEAEA;
+}
+
+.dialog-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333333;
+}
+
+.dialog-header mat-icon {
+  color: #4A90E2;
+}
+
+.close-button {
+  color: #8A8A8A;
+}
+
+/* Content del diálogo */
+mat-dialog-content {
+  padding: 24px !important;
+  overflow-y: auto;
+}
+
+/* Sección de información del dispositivo */
+.device-info-section {
+  background: #F7F8FA;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.info-row mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+  color: #4A90E2;
+}
+
+.device-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.device-room {
+  font-size: 14px;
+  color: #8A8A8A;
+  margin-top: 2px;
+}
+
+.enabled-toggle {
+  margin-left: 16px;
+}
+
+/* Sección de horarios */
+.schedules-section {
+  margin-bottom: 24px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+}
+
+/* Lista de horarios */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schedule-item {
+  background: white;
+  border: 2px solid #EAEAEA;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.schedule-item.on {
+  border-color: #28A745;
+  background: rgba(40, 167, 69, 0.02);
+}
+
+.schedule-item.off {
+  border-color: #EB5757;
+  background: rgba(235, 87, 87, 0.02);
+}
+
+.schedule-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header del schedule item */
+.schedule-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.action-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.action-selector button {
+  border: 2px solid #EAEAEA;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.action-selector button mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}
+
+.action-selector button.selected {
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  border-color: #4A90E2;
+  color: white;
+}
+
+.action-selector button:not(.selected):hover {
+  border-color: #4A90E2;
+  background: rgba(74, 144, 226, 0.04);
+}
+
+.delete-button {
+  color: #EB5757;
+}
+
+.delete-button:disabled {
+  color: #BDBDBD;
+  cursor: not-allowed;
+}
+
+/* Selector de hora */
+.time-selector {
+  margin-bottom: 16px;
+}
+
+.time-selector mat-form-field {
+  width: 100%;
+}
+
+/* Selector de días */
+.days-selector {
+  margin-top: 12px;
+}
+
+.days-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.days-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.day-chip {
+  padding: 8px 16px;
+  border: 2px solid #EAEAEA;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8A8A8A;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.day-chip:hover {
+  border-color: #4A90E2;
+  background: rgba(74, 144, 226, 0.04);
+}
+
+.day-chip.selected {
+  background: #4A90E2;
+  border-color: #4A90E2;
+  color: white;
+}
+
+/* Actions del diálogo */
+mat-dialog-actions {
+  padding: 16px 24px !important;
+  border-top: 1px solid #EAEAEA;
+  gap: 12px;
+}
+
+mat-dialog-actions button {
+  min-width: 120px;
+}
+
+mat-dialog-actions button mat-icon {
+  margin-right: 6px;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .edit-schedule-dialog {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .device-info-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .enabled-toggle {
+    margin-left: 0;
+  }
+
+  .action-selector {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .action-selector button {
+    width: 100%;
+  }
+
+  .days-chips {
+    justify-content: center;
+  }
+}
+
