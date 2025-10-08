@@ -1,0 +1,54 @@
+<div class="register-container">
+  <mat-card class="register-card">
+    <h2 class="register-title">Crear cuenta</h2>
+
+    <form (ngSubmit)="onRegister()" class="register-form">
+
+      <mat-form-field appearance="fill" class="register-field">
+        <mat-label>Nombre completo</mat-label>
+        <input
+          matInput
+          type="text"
+          name="name"
+          required
+          [(ngModel)]="name"
+          placeholder="Introduce tu nombre completo">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill" class="register-field">
+        <mat-label>Correo electrónico</mat-label>
+        <input
+          matInput
+          type="email"
+          name="email"
+          required
+          [(ngModel)]="email"
+          placeholder="Introduce tu correo electrónico">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill" class="register-field">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          type="password"
+          name="password"
+          required
+          [(ngModel)]="password"
+          placeholder="Crea una contraseña segura">
+      </mat-form-field>
+
+
+      <button mat-flat-button color="primary" type="submit" class="register-button">
+        Registrarse
+      </button>
+
+
+      <div class="login-link">
+        ¿Ya tienes una cuenta?
+        <a routerLink="../login">Inicia sesión aquí</a>
+      </div>
+    </form>
+  </mat-card>
+</div>

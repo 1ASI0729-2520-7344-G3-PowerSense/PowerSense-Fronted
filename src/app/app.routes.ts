@@ -5,9 +5,32 @@ import { LayoutComponent } from './shared/presentation/components/layout.compone
 import { DevicesPage } from './inventory/devices/presentation/components/devices-page/devices-page';
 import { SchedulingPage } from './inventory/scheduling/presentation/components/scheduling-page/scheduling-page';
 
+//routes to login and register
+import {AuthLayoutComponent}  from './auth-layout/auth-layout.component';
+import { LoginClientComponent } from './pages/login/login-client/login-client.component';
+import { RegisterClientComponent } from './pages/register/register-client/register-client.component';
+
+
+
+
 export const routes: Routes = [
+
+
+
   {
     path: '',
+    component: AuthLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', component: LoginClientComponent },
+      { path: 'register', component: RegisterClientComponent },
+
+
+    ],
+  },
+
+  {
+    path: 'home',//home
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

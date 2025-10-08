@@ -1,0 +1,44 @@
+.auth-page-background {
+  min-height: 100vh;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-top-bar {
+  /* Propiedades para el posicionamiento y alineación */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  /* Propiedades para el tamaño y espaciado */
+  width: 100%;
+  padding: 1rem 2rem; /* 1rem arriba/abajo, 2rem a los lados */
+  box-sizing: border-box;
+}
+
+.logo-main {
+  /* ¡AQUÍ AUMENTAMOS EL TAMAÑO! */
+  font-size: 3rem; /* Lo hemos hecho notablemente más grande, ajústalo si es necesario */
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.auth-content-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  /* Añadimos padding para que el contenido no quede debajo de la barra fija */
+  padding-top: 100px; /* Ajusta este valor según el alto de tu barra superior */
+  box-sizing: border-box;
+}
