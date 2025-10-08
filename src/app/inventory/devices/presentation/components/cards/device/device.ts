@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { Device } from '../../../../domain/model/device';
+import { Device } from '../../../../domain/model/device.entity';
 
 @Component({
   selector: 'app-device',

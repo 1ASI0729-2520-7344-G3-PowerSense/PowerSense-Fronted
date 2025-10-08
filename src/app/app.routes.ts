@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
-import { DashboardOverview } from './analytics/dashboard/presentation/components/dashboard-overview/dashboard-overview';
+import { DashboardOverview } from './analytics/dashboard/presentation/components/dashboard-page/dashboard-page';
 import { UpgradeProComponent } from './shared/presentation/components/upgrade-pro.component';
 import { LayoutComponent } from './shared/presentation/components/layout.component';
 import { DevicesPage } from './inventory/devices/presentation/components/devices-page/devices-page';
 import { SchedulingPage } from './inventory/scheduling/presentation/components/scheduling-page/scheduling-page';
+import { ReportsPage } from './analytics/reports/presentation/components/reports-page/reports-page';
 
 export const routes: Routes = [
   {
@@ -14,7 +15,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardOverview },
       { path: 'devices', component: DevicesPage },
       { path: 'scheduling', component: SchedulingPage },
-      // { path: 'reports', component: ReportsComponent },
+      { path: 'reports', component: ReportsPage },
       // { path: 'alerts', component: AlertsComponent },
       // { path: 'settings', component: SettingsComponent },
       // { path: 'help', component: HelpComponent },

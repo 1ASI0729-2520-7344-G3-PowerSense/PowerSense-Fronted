@@ -1,4 +1,4 @@
-import { Device, DeviceId } from '../model/device';
+import { Device, DeviceId } from '../model/device.entity';
 
 // Filtros básicos para buscar dispositivos
 export interface DeviceQuery {
@@ -20,7 +20,7 @@ export interface DeviceRepository {
 
 // NOTA:
 // - Esta lista marca lo mínimo que necesitamos para que la pantalla funcione.
-// - Si más adelante agregas más datos (por ejemplo, historial), crea métodos
+// - Si más adelante se agregan más datos (por ejemplo, historial), crear métodos
 //   nuevos aquí y en las implementaciones.
 
 

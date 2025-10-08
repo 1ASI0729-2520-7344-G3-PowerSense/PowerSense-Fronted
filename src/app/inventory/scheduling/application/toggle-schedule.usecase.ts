@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { SCHEDULE_REPOSITORY } from '../domain/tokens';
-import { Schedule, ScheduleId } from '../domain/model/schedule';
+import { Schedule, ScheduleId } from '../domain/model/schedule.entity';
 
 // Activar o desactivar una programación
 @Injectable({ providedIn: 'root' })

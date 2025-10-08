@@ -1,7 +1,4 @@
-/* ============================================
-   EDIT SCHEDULE DIALOG
-   ============================================ */
-
+/* Copiado del original para mantener estilos */
 .edit-schedule-dialog {
   width: 600px;
   max-height: 80vh;
@@ -278,4 +275,5 @@ mat-dialog-actions button mat-icon {
     justify-content: center;
   }
 }
+
 

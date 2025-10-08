@@ -1,5 +1,5 @@
-import { Schedule, ScheduleId, CreateScheduleDTO, UpdateScheduleDTO } from '../model/schedule';
-import { ScheduleRule, RuleId } from '../model/schedule-rule';
+import { Schedule, ScheduleId, CreateScheduleDTO, UpdateScheduleDTO } from '../model/schedule.entity';
+import { ScheduleRule, RuleId } from '../model/schedule-rule.entity';
 
 // Filtros para búsqueda de programaciones
 export interface ScheduleQuery {

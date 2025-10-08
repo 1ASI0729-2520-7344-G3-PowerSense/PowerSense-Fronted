@@ -1,4 +1,4 @@
-import { Device, DeviceId } from '../domain/model/device';
+import { Device, DeviceId } from '../domain/model/device.entity';
 import { DeviceQuery, DeviceRepository } from '../domain/repositories/device.repository';
 
 function generateId(): DeviceId {
@@ -8,7 +8,7 @@ function generateId(): DeviceId {
 export class InMemoryDeviceRepository implements DeviceRepository {
   // Este repositorio vive en memoria y es ideal para desarrollo/maquetas.
   // FUTURO: Sustituir por una implementación HTTP que consuma la API real.
-  // Ver 'device.repository.ts' para el contrato a respetar.
+  // Ver 'device.repository.ts' para la estructura a respetar.
   private devices: Device[] = [
     {
       id: 'dev-1',

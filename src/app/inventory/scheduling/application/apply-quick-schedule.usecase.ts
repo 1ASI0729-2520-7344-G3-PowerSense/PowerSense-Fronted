@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { SCHEDULE_REPOSITORY } from '../domain/tokens';
 import { DEVICE_REPOSITORY } from '../../devices/domain/tokens';
-import { QuickSchedulePreset } from '../domain/model/quick-schedule';
-import { Schedule } from '../domain/model/schedule';
+import { QuickSchedulePreset } from '../domain/model/quick-schedule.entity';
+import { Schedule, ScheduleConfig } from '../domain/model/schedule.entity';
 
 // Aplicar un preset de programación rápida a múltiples dispositivos
 @Injectable({ providedIn: 'root' })
@@ -44,10 +44,10 @@ export class ApplyQuickScheduleUseCase {
         deviceName: device.name,
         roomName: device.location.roomName,
         enabled: true,
-        schedules: preset.defaultSchedules.map(s => ({
+        schedules: preset.defaultSchedules.map((s): ScheduleConfig => ({
           action: s.action,
           time: { hour: s.hour, minute: s.minute },
-          days: s.days as any[]
+          days: s.days as any
         }))
       };
 

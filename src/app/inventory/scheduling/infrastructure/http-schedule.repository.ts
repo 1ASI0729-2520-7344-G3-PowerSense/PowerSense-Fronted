@@ -6,18 +6,19 @@ import {
   ScheduleId, 
   CreateScheduleDTO, 
   UpdateScheduleDTO 
-} from '../domain/model/schedule';
-import { ScheduleRule, RuleId } from '../domain/model/schedule-rule';
+} from '../domain/model/schedule.entity';
+import { ScheduleRule, RuleId } from '../domain/model/schedule-rule.entity';
 import { 
   ScheduleRepository, 
   ScheduleQuery, 
   ScheduleStats 
 } from '../domain/repositories/schedule.repository';
+import { API_BASE_URL } from '../../../shared/infrastructure/api.config';
 
 // Implementación HTTP del repositorio de programaciones
 @Injectable()
 export class HttpScheduleRepository implements ScheduleRepository {
-  private readonly baseUrl = 'http://localhost:4000';
+  private readonly baseUrl = API_BASE_URL;
 
   constructor(private http: HttpClient) {}
 

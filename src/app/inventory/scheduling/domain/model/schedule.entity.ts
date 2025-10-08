@@ -1,5 +1,5 @@
 // Modelos para gestión de horarios de dispositivos
-import { DeviceId } from '../../../devices/domain/model/device';
+import { DeviceId } from '../../../devices/domain/model/device.entity';
 
 export type ScheduleId = string;
 
@@ -39,4 +39,5 @@ export type CreateScheduleDTO = Omit<Schedule, 'id' | 'createdAt' | 'updatedAt'>
 
 // Datos para actualizar un horario existente
 export type UpdateScheduleDTO = Partial<Omit<Schedule, 'id' | 'createdAt' | 'updatedAt'>>;
+
 

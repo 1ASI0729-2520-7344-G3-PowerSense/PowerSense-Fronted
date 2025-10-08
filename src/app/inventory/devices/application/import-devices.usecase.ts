@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { DEVICE_REPOSITORY } from '../domain/tokens';
-import { Device } from '../domain/model/device';
+import { Device } from '../domain/model/device.entity';
 import { DeviceRepository } from '../domain/repositories/device.repository';
 
 @Injectable({ providedIn: 'root' })
@@ -9,7 +9,7 @@ export class ImportDevicesUseCase {
 
   async execute(devices: Omit<Device, 'id'>[]): Promise<void> {
     for (const d of devices) {
-      // eslint-disable-next-line no-await-in-loop
+
       await this.repository.create(d);
     }
   }

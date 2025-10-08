@@ -17,7 +17,7 @@
       "id": "dev-2",
       "name": "Aire Acondicionado",
       "category": "ac",
-      "status": "active",
+      "status": "inactive",
       "location": {
         "roomId": "room-bedroom",
         "roomName": "Dormitorio"
@@ -95,7 +95,7 @@
       "id": "dev-8",
       "name": "Lavadora",
       "category": "washing-machine",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-laundry",
         "roomName": "Lavandería"
@@ -108,7 +108,7 @@
       "id": "dev-9",
       "name": "Microondas",
       "category": "microwave",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-kitchen",
         "roomName": "Cocina"
@@ -121,7 +121,7 @@
       "id": "dev-10",
       "name": "Consola de Videojuegos",
       "category": "console",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-living",
         "roomName": "Sala"
@@ -134,7 +134,7 @@
       "id": "dev-11",
       "name": "Impresora",
       "category": "printer",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-office",
         "roomName": "Oficina"
@@ -147,7 +147,7 @@
       "id": "dev-12",
       "name": "Secadora de Ropa",
       "category": "dryer",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-laundry",
         "roomName": "Lavandería"
@@ -160,7 +160,7 @@
       "id": "dev-13",
       "name": "Horno Eléctrico",
       "category": "oven",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-kitchen",
         "roomName": "Cocina"
@@ -186,7 +186,7 @@
       "id": "dev-15",
       "name": "Lámpara de Noche",
       "category": "light",
-      "status": "active",
+      "status": "inactive",
       "location": {
         "roomId": "room-bedroom",
         "roomName": "Dormitorio"
@@ -212,7 +212,7 @@
       "id": "dev-17",
       "name": "Equipo de Sonido",
       "category": "sound-system",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-living",
         "roomName": "Sala"
@@ -238,7 +238,7 @@
       "id": "dev-19",
       "name": "Puerta de Garaje",
       "category": "motor",
-      "status": "inactive",
+      "status": "active",
       "location": {
         "roomId": "room-garage",
         "roomName": "Garaje"
@@ -251,7 +251,7 @@
       "id": "dev-20",
       "name": "Luz del Balcón",
       "category": "light",
-      "status": "active",
+      "status": "inactive",
       "location": {
         "roomId": "room-balcony",
         "roomName": "Balcón"
@@ -331,7 +331,7 @@
         }
       ],
       "createdAt": "2025-01-15T10:00:00.000Z",
-      "updatedAt": "2025-10-04T15:23:09.394Z"
+      "updatedAt": "2025-10-07T23:57:03.277Z"
     },
     {
       "id": "sch-2",
@@ -374,7 +374,7 @@
         }
       ],
       "createdAt": "2025-01-20T12:00:00.000Z",
-      "updatedAt": "2025-10-04T15:30:14.680Z"
+      "updatedAt": "2025-10-06T01:46:23.135Z"
     },
     {
       "id": "sch-3",
@@ -401,7 +401,7 @@
         }
       ],
       "createdAt": "2025-02-01T14:00:00.000Z",
-      "updatedAt": "2025-10-04T15:23:06.085Z"
+      "updatedAt": "2025-10-07T23:57:04.567Z"
     },
     {
       "id": "sch-4",
@@ -440,7 +440,7 @@
         }
       ],
       "createdAt": "2025-02-05T16:00:00.000Z",
-      "updatedAt": "2025-02-05T16:00:00.000Z"
+      "updatedAt": "2025-10-07T23:57:05.789Z"
     },
     {
       "id": "sch-5",
@@ -687,6 +687,464 @@
           "roomIds": []
         }
       ]
+    }
+  ],
+  "reports-kpis": {
+    "totalConsumptionKWh": 2847,
+    "totalCostUSD": 1423,
+    "efficiencyPct": 87,
+    "comparison": {
+      "consumptionPct": -12,
+      "costPct": -8,
+      "efficiencyPct": 3
+    }
+  },
+  "reports-monthly": [
+    {
+      "month": "Ene",
+      "y2023": 3250,
+      "y2024": 3000
+    },
+    {
+      "month": "Feb",
+      "y2023": 3100,
+      "y2024": 2850
+    },
+    {
+      "month": "Mar",
+      "y2023": 3300,
+      "y2024": 3050
+    },
+    {
+      "month": "Abr",
+      "y2023": 3000,
+      "y2024": 2750
+    },
+    {
+      "month": "May",
+      "y2023": 2900,
+      "y2024": 2800
+    },
+    {
+      "month": "Jun",
+      "y2023": 3400,
+      "y2024": 3200
+    },
+    {
+      "month": "Jul",
+      "y2023": 3350,
+      "y2024": 3100
+    },
+    {
+      "month": "Ago",
+      "y2023": 3150,
+      "y2024": 2950
+    },
+    {
+      "month": "Sep",
+      "y2023": 2950,
+      "y2024": 2800
+    },
+    {
+      "month": "Oct",
+      "y2023": 2800,
+      "y2024": 2600
+    },
+    {
+      "month": "Nov",
+      "y2023": 3050,
+      "y2024": 2900
+    },
+    {
+      "month": "Dic",
+      "y2023": 3200,
+      "y2024": 3050
+    }
+  ],
+  "reports-departments": [
+    {
+      "departmentId": "dept-bal",
+      "departmentName": "Balcón",
+      "metric": "consumption",
+      "value": 650
+    },
+    {
+      "departmentId": "dept-coc",
+      "departmentName": "Cocina",
+      "metric": "consumption",
+      "value": 1456
+    },
+    {
+      "departmentId": "dept-hab",
+      "departmentName": "Habitación",
+      "metric": "consumption",
+      "value": 1230
+    },
+    {
+      "departmentId": "dept-sal",
+      "departmentName": "Sala",
+      "metric": "consumption",
+      "value": 847
+    },
+    {
+      "departmentId": "dept-ban",
+      "departmentName": "Baño",
+      "metric": "consumption",
+      "value": 320
+    }
+  ],
+  "reports-history": [
+    {
+      "id": "hist-1",
+      "date": "2025-01-31",
+      "name": "Reporte Enero 2025",
+      "type": "consumption",
+      "department": "Administración",
+      "consumptionKWh": 847,
+      "cost": 423,
+      "variationPct": -5
+    },
+    {
+      "id": "hist-2",
+      "date": "2025-01-31",
+      "name": "Reporte Enero 2025",
+      "type": "consumption",
+      "department": "Producción",
+      "consumptionKWh": 1456,
+      "cost": 728,
+      "variationPct": 12
+    },
+    {
+      "id": "hist-3",
+      "date": "2025-01-31",
+      "name": "Reporte Enero 2025",
+      "type": "consumption",
+      "department": "Ventas",
+      "consumptionKWh": 544,
+      "cost": 272,
+      "variationPct": -2
+    },
+    {
+      "id": "hist-4",
+      "date": "2024-12-31",
+      "name": "Reporte Diciembre 2024",
+      "type": "costs",
+      "department": "General",
+      "consumptionKWh": 2980,
+      "cost": 1490,
+      "variationPct": 3
+    }
+  ],
+  "realtime-consumption": [
+    {
+      "period": "day",
+      "name": "00:00",
+      "value": 110
+    },
+    {
+      "period": "day",
+      "name": "01:00",
+      "value": 105
+    },
+    {
+      "period": "day",
+      "name": "02:00",
+      "value": 102
+    },
+    {
+      "period": "day",
+      "name": "03:00",
+      "value": 100
+    },
+    {
+      "period": "day",
+      "name": "04:00",
+      "value": 98
+    },
+    {
+      "period": "day",
+      "name": "05:00",
+      "value": 105
+    },
+    {
+      "period": "day",
+      "name": "06:00",
+      "value": 120
+    },
+    {
+      "period": "day",
+      "name": "07:00",
+      "value": 150
+    },
+    {
+      "period": "day",
+      "name": "08:00",
+      "value": 160
+    },
+    {
+      "period": "day",
+      "name": "09:00",
+      "value": 155
+    },
+    {
+      "period": "day",
+      "name": "10:00",
+      "value": 150
+    },
+    {
+      "period": "day",
+      "name": "11:00",
+      "value": 145
+    },
+    {
+      "period": "day",
+      "name": "12:00",
+      "value": 148
+    },
+    {
+      "period": "day",
+      "name": "13:00",
+      "value": 152
+    },
+    {
+      "period": "day",
+      "name": "14:00",
+      "value": 147
+    },
+    {
+      "period": "day",
+      "name": "15:00",
+      "value": 140
+    },
+    {
+      "period": "day",
+      "name": "16:00",
+      "value": 135
+    },
+    {
+      "period": "day",
+      "name": "17:00",
+      "value": 145
+    },
+    {
+      "period": "day",
+      "name": "18:00",
+      "value": 165
+    },
+    {
+      "period": "day",
+      "name": "19:00",
+      "value": 180
+    },
+    {
+      "period": "day",
+      "name": "20:00",
+      "value": 175
+    },
+    {
+      "period": "day",
+      "name": "21:00",
+      "value": 160
+    },
+    {
+      "period": "day",
+      "name": "22:00",
+      "value": 140
+    },
+    {
+      "period": "day",
+      "name": "23:00",
+      "value": 120
+    },
+    {
+      "period": "week",
+      "name": "Lun",
+      "value": 850
+    },
+    {
+      "period": "week",
+      "name": "Mar",
+      "value": 830
+    },
+    {
+      "period": "week",
+      "name": "Mié",
+      "value": 880
+    },
+    {
+      "period": "week",
+      "name": "Jue",
+      "value": 910
+    },
+    {
+      "period": "week",
+      "name": "Vie",
+      "value": 960
+    },
+    {
+      "period": "week",
+      "name": "Sáb",
+      "value": 750
+    },
+    {
+      "period": "week",
+      "name": "Dom",
+      "value": 700
+    },
+    {
+      "period": "month",
+      "name": "01",
+      "value": 820
+    },
+    {
+      "period": "month",
+      "name": "02",
+      "value": 780
+    },
+    {
+      "period": "month",
+      "name": "03",
+      "value": 850
+    },
+    {
+      "period": "month",
+      "name": "04",
+      "value": 870
+    },
+    {
+      "period": "month",
+      "name": "05",
+      "value": 900
+    },
+    {
+      "period": "month",
+      "name": "06",
+      "value": 880
+    },
+    {
+      "period": "month",
+      "name": "07",
+      "value": 910
+    },
+    {
+      "period": "month",
+      "name": "08",
+      "value": 920
+    },
+    {
+      "period": "month",
+      "name": "09",
+      "value": 890
+    },
+    {
+      "period": "month",
+      "name": "10",
+      "value": 860
+    },
+    {
+      "period": "month",
+      "name": "11",
+      "value": 840
+    },
+    {
+      "period": "month",
+      "name": "12",
+      "value": 880
+    },
+    {
+      "period": "month",
+      "name": "13",
+      "value": 910
+    },
+    {
+      "period": "month",
+      "name": "14",
+      "value": 930
+    },
+    {
+      "period": "month",
+      "name": "15",
+      "value": 950
+    },
+    {
+      "period": "month",
+      "name": "16",
+      "value": 940
+    },
+    {
+      "period": "month",
+      "name": "17",
+      "value": 920
+    },
+    {
+      "period": "month",
+      "name": "18",
+      "value": 900
+    },
+    {
+      "period": "month",
+      "name": "19",
+      "value": 880
+    },
+    {
+      "period": "month",
+      "name": "20",
+      "value": 860
+    },
+    {
+      "period": "month",
+      "name": "21",
+      "value": 870
+    },
+    {
+      "period": "month",
+      "name": "22",
+      "value": 890
+    },
+    {
+      "period": "month",
+      "name": "23",
+      "value": 910
+    },
+    {
+      "period": "month",
+      "name": "24",
+      "value": 900
+    },
+    {
+      "period": "month",
+      "name": "25",
+      "value": 880
+    },
+    {
+      "period": "month",
+      "name": "26",
+      "value": 850
+    },
+    {
+      "period": "month",
+      "name": "27",
+      "value": 830
+    },
+    {
+      "period": "month",
+      "name": "28",
+      "value": 810
+    },
+    {
+      "period": "month",
+      "name": "29",
+      "value": 840
+    },
+    {
+      "period": "month",
+      "name": "30",
+      "value": 860
+    },
+    {
+      "period": "month",
+      "name": "31",
+      "value": 850
     }
   ]
 }

@@ -11,4 +11,4 @@ import { CommonModule } from '@angular/common';
   styleUrl: './monthly-savings.css'
 })
 export class MonthlySavings {}
-// Resumen claro del ahorro del mes para saber si vamos mejorando o no.
+// Resumen del ahorro del mes

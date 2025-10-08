@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { DEVICE_REPOSITORY } from '../domain/tokens';
-import { Device } from '../domain/model/device';
+import { Device } from '../domain/model/device.entity';
 import { DeviceRepository } from '../domain/repositories/device.repository';
 
 @Injectable({ providedIn: 'root' })

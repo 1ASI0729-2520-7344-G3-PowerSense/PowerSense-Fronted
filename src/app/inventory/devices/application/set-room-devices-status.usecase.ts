@@ -9,8 +9,6 @@ export class SetRoomDevicesStatusUseCase {
   async execute(roomId: string, status: 'active' | 'inactive'): Promise<void> {
     const devices = await this.repository.list({ roomId });
     for (const device of devices) {
-      // sequential to keep repo simple; could be parallel with Promise.all
-      // eslint-disable-next-line no-await-in-loop
       await this.repository.setStatus(device.id, status);
     }
   }

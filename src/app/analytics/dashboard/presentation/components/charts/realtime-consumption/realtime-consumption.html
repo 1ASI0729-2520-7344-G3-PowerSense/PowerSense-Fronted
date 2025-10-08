@@ -1,14 +1,23 @@
 <mat-card class="ps-chart-card">
   <div class="ps-chart-header">
     <span class="ps-chart-title">Consumo en tiempo real</span>
-    <mat-button-toggle-group [(ngModel)]="selectedPeriod" class="ps-segmented-control" appearance="legacy">
+    <mat-button-toggle-group [(ngModel)]="selectedPeriod" (change)="onPeriodChange()" class="ps-segmented-control" appearance="legacy">
       <mat-button-toggle value="day">Día</mat-button-toggle>
       <mat-button-toggle value="week">Semana</mat-button-toggle>
       <mat-button-toggle value="month">Mes</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="ps-chart-content">
-    <!-- Aquí iría el gráfico SVG/canvas, placeholder por ahora -->
-    <div class="ps-chart-placeholder">[Gráfico de líneas aquí]</div>
+    <ngx-charts-line-chart
+      [scheme]="lineColorScheme"
+      [results]="[{ name: 'Consumo', series: results } ]"
+      [gradient]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="false"
+      [autoScale]="true"
+      [roundDomains]="true"
+      [animations]="true"
+    ></ngx-charts-line-chart>
   </div>
 </mat-card>

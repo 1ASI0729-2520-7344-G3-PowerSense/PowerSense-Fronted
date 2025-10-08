@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { SCHEDULE_REPOSITORY } from '../domain/tokens';
-import { ScheduleRule, RuleId } from '../domain/model/schedule-rule';
+import { ScheduleRule, RuleId } from '../domain/model/schedule-rule.entity';
 
 // Activar o desactivar una regla inteligente
 @Injectable({ providedIn: 'root' })

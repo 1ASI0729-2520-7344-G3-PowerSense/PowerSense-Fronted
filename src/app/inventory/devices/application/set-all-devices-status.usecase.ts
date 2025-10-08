@@ -9,7 +9,6 @@ export class SetAllDevicesStatusUseCase {
   async execute(status: 'active' | 'inactive'): Promise<void> {
     const all = await this.repository.list();
     for (const device of all) {
-      // eslint-disable-next-line no-await-in-loop
       await this.repository.setStatus(device.id, status);
     }
   }

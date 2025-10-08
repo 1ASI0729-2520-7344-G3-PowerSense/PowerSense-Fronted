@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { SCHEDULE_REPOSITORY } from '../domain/tokens';
-import { Schedule, ScheduleId, UpdateScheduleDTO } from '../domain/model/schedule';
+import { Schedule, ScheduleId, UpdateScheduleDTO } from '../domain/model/schedule.entity';
 
 // Actualizar una programación existente
 @Injectable({ providedIn: 'root' })

@@ -1,0 +1,186 @@
+<div class="reports-page">
+  <!-- Encabezado -->
+  <div class="page-header">
+    <h1 class="page-title">Reportes</h1>
+  </div>
+
+  <!-- Barra de filtros -->
+  <mat-card class="filters-card">
+    <div class="filters-row">
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Tipo de Reporte</mat-label>
+        <mat-select [(ngModel)]="selectedReportType">
+          <mat-option value="consumption">Consumo</mat-option>
+          <mat-option value="costs">Costos</mat-option>
+          <mat-option value="efficiency">Eficiencia</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Fecha Inicio</mat-label>
+        <input matInput [(ngModel)]="startDate" type="date" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Fecha Fin</mat-label>
+        <input matInput [(ngModel)]="endDate" type="date" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="apply-button" (click)="applyFilters()">
+        <mat-icon>tune</mat-icon>
+        Aplicar Filtros
+      </button>
+    </div>
+  </mat-card>
+
+  <!-- KPIs -->
+  <div class="kpi-grid">
+    <mat-card class="kpi-card">
+      <div class="kpi-header">
+        <div class="kpi-title">Consumo Total</div>
+        <div class="kpi-icon"><mat-icon>bolt</mat-icon></div>
+      </div>
+      <div class="kpi-value">{{ totalConsumption() | number }} kWh</div>
+      <div class="kpi-trend">
+        <div class="kpi-variation" [class.positive]="isPositive(varConsumption())" [class.negative]="!isPositive(varConsumption())">
+          <mat-icon class="variation-icon">{{ isPositive(varConsumption()) ? 'trending_up' : 'trending_down' }}</mat-icon>
+          <span>{{ varConsumption() | number:'1.0-1' }}%</span>
+        </div>
+        <span class="variation-sub">vs período anterior</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-header">
+        <div class="kpi-title">Costo Total</div>
+        <div class="kpi-icon"><mat-icon>attach_money</mat-icon></div>
+      </div>
+      <div class="kpi-value">${{ totalCost() | number }}</div>
+      <div class="kpi-trend">
+        <div class="kpi-variation" [class.positive]="isPositive(varCost())" [class.negative]="!isPositive(varCost())">
+          <mat-icon class="variation-icon">{{ isPositive(varCost()) ? 'trending_up' : 'trending_down' }}</mat-icon>
+          <span>{{ varCost() | number:'1.0-1' }}%</span>
+        </div>
+        <span class="variation-sub">vs período anterior</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-header">
+        <div class="kpi-title">Eficiencia</div>
+        <div class="kpi-icon"><mat-icon>speed</mat-icon></div>
+      </div>
+      <div class="kpi-value">{{ efficiency() }}%</div>
+      <div class="kpi-trend">
+        <div class="kpi-variation" [class.positive]="isPositive(varEfficiency())" [class.negative]="!isPositive(varEfficiency())">
+          <mat-icon class="variation-icon">{{ isPositive(varEfficiency()) ? 'trending_up' : 'trending_down' }}</mat-icon>
+          <span>{{ varEfficiency() | number:'1.0-1' }}%</span>
+        </div>
+        <span class="variation-sub">vs período anterior</span>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="charts-grid">
+    <mat-card class="chart-card">
+      <div class="chart-header">
+        <span class="chart-title">Consumo mensual</span>
+        <div class="chart-actions">
+          <div class="chart-legend">
+            <span class="legend-item"><span class="dot primary"></span> 2024</span>
+            <span class="legend-item"><span class="dot secondary"></span> 2023</span>
+          </div>
+          <button mat-icon-button class="download-button" aria-label="Descargar consumo mensual" (click)="downloadMonthly()">
+            <mat-icon>download</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="chart-content" #monthlyChart>
+        <app-reports-monthly-line
+          [scheme]="lineColorScheme"
+          [results]="monthlyLineResults()"
+        ></app-reports-monthly-line>
+      </div>
+    </mat-card>
+
+    <mat-card class="chart-card">
+      <div class="chart-header">
+        <span class="chart-title">Comparativa por departamentos</span>
+        <div class="chart-actions">
+          <button mat-icon-button class="download-button" aria-label="Descargar comparativa departamentos" (click)="downloadDepartments()">
+            <mat-icon>download</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="chart-content" #departmentChart>
+        <app-reports-departments-bar
+          [scheme]="barColorScheme"
+          [results]="departmentBarResults()"
+        ></app-reports-departments-bar>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Historial de reportes -->
+  <mat-card class="history-card">
+    <div class="history-header">
+      <span class="history-title">Historial de reportes</span>
+      <div class="history-actions">
+        <button mat-stroked-button class="export-button" (click)="exportHistoryPdf()">
+          <mat-icon>picture_as_pdf</mat-icon>
+          Exportar PDF
+        </button>
+        <button mat-stroked-button class="export-button" (click)="exportHistoryCsv()">
+          <mat-icon>table_view</mat-icon>
+          Exportar CSV
+        </button>
+      </div>
+    </div>
+
+    <table mat-table [dataSource]="history()" class="history-table">
+      <!-- Fecha -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let row"> {{ row.date }} </td>
+      </ng-container>
+
+      <!-- Nombre -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let row"> {{ row.name }} </td>
+      </ng-container>
+
+      <!-- Tipo -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let row"> {{ row.type }} </td>
+      </ng-container>
+
+      <!-- Variación -->
+      <ng-container matColumnDef="variation">
+        <th mat-header-cell *matHeaderCellDef> Variación </th>
+        <td mat-cell *matCellDef="let row">
+          <span class="variation-tag" [class.positive]="row.variation >= 0" [class.negative]="row.variation < 0">
+            <mat-icon class="variation-icon">{{ row.variation >= 0 ? 'north_east' : 'south_east' }}</mat-icon>
+            {{ row.variation | number:'1.0-1' }}%
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Acciones -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let row" class="actions-cell">
+          <button mat-icon-button aria-label="Descargar"><mat-icon>download</mat-icon></button>
+          <button mat-icon-button aria-label="Ver"><mat-icon>visibility</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>
+
+

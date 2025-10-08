@@ -60,6 +60,7 @@
 .ps-dashboard-row {
   display: grid;
   gap: 24px;
+  align-items: stretch;
 }
 
 /* Fila de 4 cards pequeñas */
@@ -70,11 +71,13 @@
 /* Fila de 2 gráficos grandes */
 .ps-dashboard-row-charts {
   grid-template-columns: 1fr 1fr;
+  align-items: stretch;
 }
 
 /* Fila de 2 cards medianas */
 .ps-dashboard-row-double {
   grid-template-columns: 1fr 1fr;
+  align-items: stretch;
 }
 
 /* Fila de 1 card ancha */

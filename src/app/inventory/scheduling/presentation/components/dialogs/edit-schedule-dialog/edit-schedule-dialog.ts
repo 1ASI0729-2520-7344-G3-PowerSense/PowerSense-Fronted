@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { Schedule, ScheduleConfig, DayOfWeek } from '../../../domain/model/schedule';
+import { Schedule, ScheduleConfig, DayOfWeek } from '../../../../domain/model/schedule.entity';
 
 export interface EditScheduleDialogData {
   schedule: Schedule;
@@ -58,7 +58,7 @@ export class EditScheduleDialog {
       action: 'on',
       time: { hour: 18, minute: 0 },
       days: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
-    };
+    } as ScheduleConfig;
     this.schedules.update(schedules => [...schedules, newSchedule]);
   }
 
@@ -143,4 +143,5 @@ export class EditScheduleDialog {
     });
   }
 }
+
 

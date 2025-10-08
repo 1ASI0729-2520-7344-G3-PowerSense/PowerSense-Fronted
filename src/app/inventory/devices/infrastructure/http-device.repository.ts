@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { Device, DeviceId } from '../domain/model/device';
+import { Device, DeviceId } from '../domain/model/device.entity';
 import { DeviceQuery, DeviceRepository } from '../domain/repositories/device.repository';
+import { API_BASE_URL } from '../../../shared/infrastructure/api.config';
 
 @Injectable({ providedIn: 'root' })
 export class HttpDeviceRepository implements DeviceRepository {
-  private readonly baseUrl = 'http://localhost:4000/devices';
+  private readonly baseUrl = `${API_BASE_URL}/devices`;
 
   constructor(private readonly http: HttpClient) {}
 

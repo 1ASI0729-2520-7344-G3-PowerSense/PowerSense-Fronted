@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Device } from '../domain/model/device';
+import { Device } from '../domain/model/device.entity';
 import { DeviceQuery, DeviceRepository } from '../domain/repositories/device.repository';
 import { DEVICE_REPOSITORY } from '../domain/tokens';
 

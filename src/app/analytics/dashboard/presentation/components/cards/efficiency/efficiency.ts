@@ -12,4 +12,4 @@ import { CommonModule } from '@angular/common';
   styleUrl: './efficiency.css'
 })
 export class Efficiency {}
-// Indicador rápido de qué tan bien estamos usando la energía.
+// Indicador de la energía.

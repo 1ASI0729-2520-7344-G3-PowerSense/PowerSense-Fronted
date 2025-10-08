@@ -42,11 +42,12 @@ import { DashboardLayout } from '../dashboard-layout/dashboard-layout';
     Comparative,
     DashboardLayout
   ],
-  templateUrl: './dashboard-overview.html',
-  styleUrl: './dashboard-overview.css'
+  templateUrl: './dashboard-page.html',
+  styleUrl: './dashboard-page.css'
 })
 export class DashboardOverview {
-  // Vista orquestadora del dashboard. No contiene lógica de negocio;
+  // Vista organizadora del dashboard. No contiene lógica de negocio;
   // compone tarjetas y gráficos en el layout definido en 'DashboardLayout'.
-  // Si necesitas pasar datos/inputs a las tarjetas, este es el punto central.
 }
+
+

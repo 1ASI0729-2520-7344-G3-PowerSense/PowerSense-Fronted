@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './recent-alerts.css'
 })
 export class RecentAlerts {
-  // Últimos avisos para enterarse rápido de lo importante sin abrir reportes.
+  // Últimos avisos para mostrar sin abrir reportes.
   alerts = [
     { type: 'error', icon: 'error', message: 'Consumo excesivo detectado', date: '01/10 14:32' },
     { type: 'warning', icon: 'warning', message: 'Pico de energía registrado', date: '01/10 13:10' },

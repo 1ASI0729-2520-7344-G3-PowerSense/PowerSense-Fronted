@@ -4,8 +4,8 @@ import {
   ScheduleId, 
   CreateScheduleDTO, 
   UpdateScheduleDTO 
-} from '../domain/model/schedule';
-import { ScheduleRule, RuleId } from '../domain/model/schedule-rule';
+} from '../domain/model/schedule.entity';
+import { ScheduleRule, RuleId } from '../domain/model/schedule-rule.entity';
 import { 
   ScheduleRepository, 
   ScheduleQuery, 

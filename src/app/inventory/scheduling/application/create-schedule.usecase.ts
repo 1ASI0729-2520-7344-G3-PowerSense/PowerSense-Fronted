@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { SCHEDULE_REPOSITORY } from '../domain/tokens';
-import { Schedule, CreateScheduleDTO } from '../domain/model/schedule';
+import { Schedule, CreateScheduleDTO } from '../domain/model/schedule.entity';
 
 // Crear una nueva programación para un dispositivo
 @Injectable({ providedIn: 'root' })

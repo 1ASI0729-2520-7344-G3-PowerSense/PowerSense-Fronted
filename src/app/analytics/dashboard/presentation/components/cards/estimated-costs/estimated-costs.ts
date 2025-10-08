@@ -11,6 +11,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './estimated-costs.css'
 })
 export class EstimatedCosts {
-  // Muestra un estimado de costos. Ideal para dar contexto rápido del gasto
-  // del periodo actual sin entrar a reportes detallados.
+  // Muestra un estimado de costos.
 }

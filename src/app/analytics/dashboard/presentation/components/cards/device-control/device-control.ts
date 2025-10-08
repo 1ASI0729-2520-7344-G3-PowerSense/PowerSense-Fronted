@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DeviceControl {
   // Tarjeta simple para mostrar controles rápidos de algunos dispositivos.
-  // En el módulo real de Devices está la lógica completa; aquí solo se ilustra.
+  // En el módulo de Devices está la lógica completa; aquí solo se ilustra.
   devices = [
     { name: 'Aire acondicionado', on: true },
     { name: 'Luz sala', on: false },

@@ -10,10 +10,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialog } from '@angular/material/dialog';
-import { Schedule } from '../../../domain/model/schedule';
+import { Schedule } from '../../../domain/model/schedule.entity';
 import { ScheduleStats } from '../../../domain/repositories/schedule.repository';
-import { ScheduleRule } from '../../../domain/model/schedule-rule';
-import { QUICK_SCHEDULE_PRESETS } from '../../../domain/model/quick-schedule';
+import { ScheduleRule } from '../../../domain/model/schedule-rule.entity';
+import { QUICK_SCHEDULE_PRESETS } from '../../../domain/model/quick-schedule.entity';
 import { ListSchedulesUseCase } from '../../../application/list-schedules.usecase';
 import { ToggleScheduleUseCase } from '../../../application/toggle-schedule.usecase';
 import { DeleteScheduleUseCase } from '../../../application/delete-schedule.usecase';
@@ -22,7 +22,7 @@ import { ListScheduleRulesUseCase } from '../../../application/list-schedule-rul
 import { ToggleScheduleRuleUseCase } from '../../../application/toggle-schedule-rule.usecase';
 import { ApplyQuickScheduleUseCase } from '../../../application/apply-quick-schedule.usecase';
 import { UpdateScheduleUseCase } from '../../../application/update-schedule.usecase';
-import { EditScheduleDialog } from '../edit-schedule-dialog/edit-schedule-dialog';
+import { EditScheduleDialog } from '../dialogs/edit-schedule-dialog/edit-schedule-dialog';
 
 @Component({
   selector: 'app-scheduling-page',

@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './saving-tips.css'
 })
 export class SavingTips {
-  // Consejos cortos y accionables para reducir consumo sin complicaciones.
+  // Consejos cortos y accionables para reducir consumo
   tips = [
     'Apaga las luces que no uses',
     'Desconecta cargadores cuando no estén en uso',

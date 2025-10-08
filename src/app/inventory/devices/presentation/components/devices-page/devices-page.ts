@@ -13,7 +13,7 @@ import { SetAllDevicesStatusUseCase } from '../../../application/set-all-devices
 import { DeviceCardComponent } from '../cards/device/device';
 import { DevicesToolbarComponent } from '../cards/toolbar/toolbar';
 import { RoomsCardComponent } from '../cards/rooms/rooms';
-import { Device } from '../../../domain/model/device';
+import { Device } from '../../../domain/model/device.entity';
 
 @Component({
   selector: 'app-devices-page',
@@ -112,7 +112,7 @@ export class DevicesPage {
   }
 
   get metrics() {
-    // Números rápidos para las tarjetas de resumen
+    // Valores para las cards de dispositivos
     const items = this.devices();
     const total = items.length;
     const active = items.filter(d => d.status === 'active').length;
@@ -121,7 +121,7 @@ export class DevicesPage {
   }
 
   get rooms() {
-    // Agrupa dispositivos por habitación para la sección inferior
+    // Agrupa dispositivos por habitación
     const map = new Map<string, { roomId: string; roomName: string; devices: Device[]; totalWatts: number; active: number }>();
     for (const d of this.devices()) {
       const key = d.location.roomId;
@@ -182,10 +182,10 @@ export class DevicesPage {
     return clamped + '%';
   }
 
-  // Enciende/apaga un dispositivo sin recargar la lista completa
+  // Enciende/apaga un dispositivo
   async toggleDevice(device: Device): Promise<void> {
     const next = device.status === 'active' ? 'inactive' : 'active';
-    // Optimistic update to avoid scroll jumps
+
     const prev = this.devices();
     const optimistic = prev.map(d => (d.id === device.id ? { ...d, status: next as 'active' | 'inactive' } : d));
     const sorted = this.sortDevices(optimistic);
@@ -193,7 +193,7 @@ export class DevicesPage {
     try {
       await this.setStatus.execute(device.id, next);
     } catch {
-      // Revert on error
+
       this.devices.set(prev);
     }
   }
@@ -239,7 +239,7 @@ export class DevicesPage {
     reader.readAsText(file);
   }
 
-  // Enciende/apaga todos los dispositivos mostrados
+  // Enciende/apaga todos los dispositivos
   async setAll(status: 'active' | 'inactive'): Promise<void> {
     const prev = this.devices();
     const optimistic = prev.map(d => ({ ...d, status: status as 'active' | 'inactive' }));
@@ -252,7 +252,7 @@ export class DevicesPage {
   }
 
   showMore(): void {
-    // Muestra 6 más cada vez hasta completar la lista
+    // Muestra 6 cards más cada vez hasta completar la lista
     const next = Math.min(this.visibleCount() + this.pageSize, this.devices().length);
     this.visibleCount.set(next);
   }
