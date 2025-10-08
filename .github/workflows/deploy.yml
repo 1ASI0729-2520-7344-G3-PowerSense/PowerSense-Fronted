@@ -1,0 +1,61 @@
+name: Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build Angular
+        run: |
+          REPO_NAME=${{ github.event.repository.name }}
+          OWNER=${{ github.repository_owner }}
+          if [ "$REPO_NAME" = "$OWNER.github.io" ]; then
+            BASE="/"
+            DEPLOY="/"
+          else
+            BASE="/$REPO_NAME/"
+            DEPLOY="/$REPO_NAME/"
+          fi
+          echo "Using base-href=$BASE deploy-url=$DEPLOY"
+          npm run build -- --base-href "$BASE" --deploy-url "$DEPLOY"
+
+      - name: Add SPA 404 fallback
+        run: cp dist/PowerSense/browser/index.html dist/PowerSense/browser/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/PowerSense/browser
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+
