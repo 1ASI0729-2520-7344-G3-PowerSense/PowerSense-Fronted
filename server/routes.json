@@ -7,6 +7,8 @@
   "/api/schedules/:id": "/schedules/:id",
   "/api/schedules-stats": "/schedules-stats",
   "/api/schedule-rules": "/schedule-rules",
-  "/api/schedule-rules/:id": "/schedule-rules/:id"
+  "/api/schedule-rules/:id": "/schedule-rules/:id",
+  "/auth/login": "/auth/login",
+  "/auth/register": "/auth/register"
 }
 

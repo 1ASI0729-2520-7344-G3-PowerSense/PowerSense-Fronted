@@ -1,0 +1,78 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">PowerSense</span>
+      </div>
+      <h1 class="login-title">Iniciar Sesión</h1>
+      <p class="login-subtitle">Ingresa tus credenciales para acceder a tu cuenta</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="tu@email.com" />
+        <mat-icon matPrefix>email</mat-icon>
+        @if (email?.invalid && email?.touched) {
+          <mat-error>
+            @if (email?.errors?.['required']) {
+              El correo es requerido
+            } @else if (email?.errors?.['email']) {
+              Ingresa un correo válido
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+        <mat-icon matPrefix>lock</mat-icon>
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        @if (password?.invalid && password?.touched) {
+          <mat-error>
+            @if (password?.errors?.['required']) {
+              La contraseña es requerida
+            } @else if (password?.errors?.['minlength']) {
+              La contraseña debe tener al menos 6 caracteres
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      @if (errorMessage) {
+        <div class="error-message">
+          <mat-icon>error_outline</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+      }
+
+      <button
+        mat-raised-button
+        type="submit"
+        class="login-button"
+        [disabled]="loginForm.invalid || isLoading"
+      >
+        @if (isLoading) {
+          <ng-container>
+            <mat-icon class="spinning">refresh</mat-icon>
+            <span>Iniciando sesión...</span>
+          </ng-container>
+        } @else {
+          <span>Iniciar Sesión</span>
+        }
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p class="register-link">
+        ¿No tienes una cuenta?
+        <a routerLink="/register" class="link">Regístrate aquí</a>
+      </p>
+    </div>
+  </div>
+</div>
+

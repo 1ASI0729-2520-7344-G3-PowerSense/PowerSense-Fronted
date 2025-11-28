@@ -1,0 +1,60 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <button mat-icon-button routerLink="/dashboard" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1 class="profile-title">Mi Perfil</h1>
+  </div>
+
+  @if (user) {
+    <div class="profile-content">
+      <mat-card class="profile-card">
+        <div class="profile-avatar-section">
+          <div class="profile-avatar">
+            @if (user.avatarUrl) {
+              <img [src]="user.avatarUrl" alt="Avatar" />
+            } @else {
+              <span>{{ getUserInitials() }}</span>
+            }
+          </div>
+          <h2 class="profile-name">{{ user.name }}</h2>
+          <p class="profile-email">{{ user.email }}</p>
+        </div>
+
+        <div class="profile-info">
+          <div class="info-item">
+            <div class="info-label">
+              <mat-icon>email</mat-icon>
+              <span>Correo electrónico</span>
+            </div>
+            <div class="info-value">{{ user.email }}</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">
+              <mat-icon>person</mat-icon>
+              <span>Nombre completo</span>
+            </div>
+            <div class="info-value">{{ user.name }}</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">
+              <mat-icon>calendar_today</mat-icon>
+              <span>Miembro desde</span>
+            </div>
+            <div class="info-value">{{ formatDate(user.createdAt) }}</div>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <button mat-stroked-button class="logout-button" (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Cerrar Sesión</span>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  }
+</div>
+
