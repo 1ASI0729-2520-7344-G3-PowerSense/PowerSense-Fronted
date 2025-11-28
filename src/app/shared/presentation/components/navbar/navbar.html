@@ -8,16 +8,18 @@
       <span class="navbar-badge">3</span>
     </button>
     <div class="navbar-avatar-wrapper" (click)="toggleMenu()">
-      <ng-container *ngIf="user.avatarUrl; else initials">
-        <img [src]="user.avatarUrl" alt="Avatar" class="navbar-avatar" />
-      </ng-container>
-      <ng-template #initials>
-        <div class="navbar-avatar">{{ user.initials }}</div>
-      </ng-template>
-      <div class="navbar-menu" *ngIf="showMenu" (mouseleave)="closeMenu()">
-        <a class="navbar-menu-item" href="#">Ver perfil</a>
-        <a class="navbar-menu-item" href="#">Cerrar sesión</a>
-      </div>
+      @if (currentUser()?.hasAvatar()) {
+        <img [src]="currentUser()!.avatarUrl" [alt]="currentUser()!.name" class="navbar-avatar" />
+      } @else {
+        <div class="navbar-avatar">{{ userInitials() }}</div>
+      }
+
+      @if (showMenu) {
+        <div class="navbar-menu" (mouseleave)="closeMenu()">
+          <a class="navbar-menu-item" routerLink="/profile" (click)="closeMenu()">Ver perfil</a>
+          <a class="navbar-menu-item" (click)="logout()">Cerrar sesión</a>
+        </div>
+      }
     </div>
   </div>
 </nav>
