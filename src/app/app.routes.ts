@@ -10,7 +10,7 @@ import { HelpPage } from './support/help/presentation/components/help-page/help-
 import { LoginComponent } from './auth/presentation/components/login/login';
 import { RegisterComponent } from './auth/presentation/components/register/register';
 import { authGuardSync } from './auth/guards/auth.guard';
-import { guestGuardSync } from './auth/guards/guest.guard';
+import { guestGuard } from './auth/guards/guest.guard';
 
 
 export const routes: Routes = [
@@ -18,12 +18,12 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [guestGuardSync]
+    canActivate: [guestGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [guestGuardSync]
+    canActivate: [guestGuard]
   },
 
   // Rutas protegidas (requieren autenticación)

@@ -106,6 +106,8 @@ export class HttpAuthRepository implements AuthRepository {
     const token = this.storage.getAuthToken();
 
     if (!token) {
+      // Limpiar cualquier dato residual
+      this.storage.clearAuthData();
       return null;
     }
 
@@ -113,8 +115,8 @@ export class HttpAuthRepository implements AuthRepository {
       // Intentar obtener usuario desde el backend
       const user$ = this.http.get<UserApiDTO>(`${this.authUrl}/me`).pipe(
         map(userDto => UserMapper.toDomain(userDto)),
-        catchError(() => {
-          // Si falla, limpiar storage y retornar null
+        catchError((error) => {
+          // Si falla (401, 403, etc.), limpiar storage y retornar null
           this.storage.clearAuthData();
           return throwError(() => null);
         })
@@ -122,16 +124,17 @@ export class HttpAuthRepository implements AuthRepository {
 
       const user = await firstValueFrom(user$);
 
-      // Actualizar usuario en storage
+      // Actualizar usuario en storage solo si se obtuvo correctamente
       if (user) {
         this.storage.saveAuthData(token, user);
+        return user;
       }
 
-      return user;
+      return null;
     } catch {
-      // Si hay error, intentar desde storage
-      const storedUser = this.storage.getStoredUser();
-      return storedUser;
+      // Si hay error, limpiar storage y retornar null (no usar datos del storage)
+      this.storage.clearAuthData();
+      return null;
     }
   }
 
