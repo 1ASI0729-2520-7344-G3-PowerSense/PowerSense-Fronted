@@ -9,7 +9,7 @@ import { AlertsPage } from './analytics/alerts/presentation/components/alerts-pa
 import { HelpPage } from './support/help/presentation/components/help-page/help-page';
 import { LoginComponent } from './auth/presentation/components/login/login';
 import { RegisterComponent } from './auth/presentation/components/register/register';
-import { authGuardSync } from './auth/guards/auth.guard';
+import { authGuard } from './auth/guards/auth.guard';
 import { guestGuard } from './auth/guards/guest.guard';
 
 
@@ -30,7 +30,7 @@ export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [authGuardSync], // <-- Guard aplicado aquí
+    canActivate: [authGuard], // <-- Guard aplicado aquí
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardOverview },

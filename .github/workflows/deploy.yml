@@ -33,13 +33,11 @@ jobs:
           OWNER=${{ github.repository_owner }}
           if [ "$REPO_NAME" = "$OWNER.github.io" ]; then
             BASE="/"
-            DEPLOY="/"
           else
             BASE="/$REPO_NAME/"
-            DEPLOY="/$REPO_NAME/"
           fi
-          echo "Using base-href=$BASE deploy-url=$DEPLOY"
-          npm run build -- --base-href "$BASE" --deploy-url "$DEPLOY"
+          echo "Using base-href=$BASE"
+          npm run build -- --base-href "$BASE"
 
       - name: Add SPA 404 fallback
         run: cp dist/PowerSense/browser/index.html dist/PowerSense/browser/404.html
