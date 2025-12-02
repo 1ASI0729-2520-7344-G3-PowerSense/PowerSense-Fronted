@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { 
-  Schedule, 
-  ScheduleId, 
-  CreateScheduleDTO, 
-  UpdateScheduleDTO 
+import {
+  Schedule,
+  ScheduleId,
+  CreateScheduleDTO,
+  UpdateScheduleDTO
 } from '../domain/model/schedule.entity';
 import { ScheduleRule, RuleId } from '../domain/model/schedule-rule.entity';
-import { 
-  ScheduleRepository, 
-  ScheduleQuery, 
-  ScheduleStats 
+import {
+  ScheduleRepository,
+  ScheduleQuery,
+  ScheduleStats
 } from '../domain/repositories/schedule.repository';
 
 // Repositorio en memoria para desarrollo y pruebas
@@ -140,8 +140,8 @@ export class InMemoryScheduleRepository implements ScheduleRepository {
 
     if (query?.search) {
       const search = query.search.toLowerCase();
-      result = result.filter(s => 
-        s.deviceName.toLowerCase().includes(search) || 
+      result = result.filter(s =>
+        s.deviceName.toLowerCase().includes(search) ||
         s.roomName.toLowerCase().includes(search)
       );
     }
@@ -206,7 +206,7 @@ export class InMemoryScheduleRepository implements ScheduleRepository {
 
   async getStats(): Promise<ScheduleStats> {
     const activeSchedules = this.schedules.filter(s => s.enabled);
-    
+
     // Calcular horas activas (promedio simple)
     const totalHours = activeSchedules.reduce((sum, schedule) => {
       const dailyHours = schedule.schedules.reduce((hours, config) => {
@@ -250,10 +250,27 @@ export class InMemoryScheduleRepository implements ScheduleRepository {
   }
 
   async updateRule(id: RuleId, update: Partial<ScheduleRule>): Promise<ScheduleRule> {
-    const rule = this.rules.find(r => r.id === id);
-    if (!rule) throw new Error('Rule not found');
-    Object.assign(rule, update);
-    return rule;
+    const index = this.rules.findIndex(r => r.id === id);
+
+    if (index === -1) {
+      // Si no existe, crear nueva regla
+      const newRule: ScheduleRule = {
+        id,
+        type: update.type!,
+        name: update.name!,
+        description: update.description!,
+        enabled: update.enabled ?? false,
+        conditions: update.conditions ?? [],
+        actions: update.actions ?? [],
+        priority: update.priority ?? 1
+      };
+      this.rules.push(newRule);
+      return newRule;
+    }
+
+    // Si existe, actualizar
+    Object.assign(this.rules[index], update);
+    return this.rules[index];
   }
 }
 

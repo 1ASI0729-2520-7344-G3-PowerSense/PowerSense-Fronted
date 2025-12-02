@@ -1,0 +1,109 @@
+<div class="page">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="title">
+      <h1>Alertas del Sistema</h1>
+      <p class="subtitle">Gestiona y monitorea las alertas de tu sistema de energía</p>
+    </div>
+    <button mat-raised-button color="primary" (click)="openCreateDialog()">
+      <mat-icon>add</mat-icon>
+      Nueva Alerta
+    </button>
+  </div>
+
+  <!-- Métricas -->
+  <div class="summary">
+    <div class="metric">
+      <div class="icon" style="background: #4A90E2;">
+        <mat-icon>notifications</mat-icon>
+      </div>
+      <div class="text">
+        <span class="label">Total de Alertas</span>
+        <span class="value">{{ metrics.total }}</span>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="icon" style="background: #F2C94C;">
+        <mat-icon>priority_high</mat-icon>
+      </div>
+      <div class="text">
+        <span class="label">Sin Reconocer</span>
+        <span class="value">{{ metrics.unacknowledged }}</span>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="icon" style="background: #BB6BD9;">
+        <mat-icon>warning</mat-icon>
+      </div>
+      <div class="text">
+        <span class="label">Críticas</span>
+        <span class="value">{{ metrics.critical }}</span>
+      </div>
+    </div>
+
+    <div class="metric">
+      <div class="icon" style="background: #F2994A;">
+        <mat-icon>error_outline</mat-icon>
+      </div>
+      <div class="text">
+        <span class="label">Advertencias</span>
+        <span class="value">{{ metrics.warnings }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <app-alert-filters (filtersChange)="onFiltersChange($event)"></app-alert-filters>
+
+  <!-- Alertas Dinámicas (Recientes) -->
+  @if (recentAlerts().length > 0) {
+  <div class="section">
+    <h2 class="section-title">Alertas Dinámicas</h2>
+    <div class="alerts-grid">
+      @for (alert of recentAlerts(); track alert.id) {
+      <app-alert-card [alert]="alert" [isDynamic]="true">
+      </app-alert-card>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- Alertas Configurables -->
+  <div class="section">
+    <h2 class="section-title">Alertas Configurables</h2>
+
+    @if (loading()) {
+    <div class="loading-container">
+      <mat-icon class="loading-icon">hourglass_empty</mat-icon>
+      <p>Cargando alertas...</p>
+    </div>
+    } @else if (alerts().length === 0) {
+    <mat-card class="empty-state">
+      <mat-icon>notifications_none</mat-icon>
+      <h3>No hay alertas</h3>
+      <p>No se encontraron alertas con los filtros seleccionados</p>
+      <button mat-raised-button color="primary" (click)="openCreateDialog()">
+        Crear Primera Alerta
+      </button>
+    </mat-card>
+    } @else {
+    <div class="alerts-grid">
+      @for (alert of alerts().slice(0, visibleCount()); track alert.id) {
+      <app-alert-card [alert]="alert" [isDynamic]="false" (acknowledge)="onAcknowledge($event)">
+      </app-alert-card>
+      }
+    </div>
+
+    <!-- Botón Ver Más -->
+    @if (visibleCount() < alerts().length) { <div class="show-more-container">
+      <button mat-stroked-button (click)="showMore()">
+        <mat-icon>expand_more</mat-icon>
+        Ver más alertas ({{ alerts().length - visibleCount() }} restantes)
+      </button>
+  </div>
+  }
+  }
+</div>
+</div>

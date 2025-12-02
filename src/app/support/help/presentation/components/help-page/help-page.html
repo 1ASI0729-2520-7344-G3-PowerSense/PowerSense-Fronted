@@ -1,0 +1,222 @@
+<div class="page">
+    <!-- Header -->
+    <div class="page-header">
+        <div class="title">
+            <h1>Centro de Ayuda</h1>
+            <p class="subtitle">Encuentra respuestas, guías y consejos para aprovechar al máximo PowerSense</p>
+        </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <mat-tab-group class="help-tabs" animationDuration="300ms">
+
+        <!-- FAQ Tab -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>help_outline</mat-icon>
+                <span>Preguntas Frecuentes</span>
+            </ng-template>
+
+            <div class="tab-content">
+                @for (category of faqCategories; track category.name) {
+                <div class="faq-category">
+                    <h3 class="category-title">
+                        <mat-icon>{{ category.icon }}</mat-icon>
+                        {{ category.name }}
+                    </h3>
+
+                    <mat-accordion>
+                        @for (item of category.items; track item.question) {
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>{{ item.question }}</mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>{{ item.answer }}</p>
+                        </mat-expansion-panel>
+                        }
+                    </mat-accordion>
+                </div>
+                }
+            </div>
+        </mat-tab>
+
+        <!-- Guides Tab -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>menu_book</mat-icon>
+                <span>Guías</span>
+            </ng-template>
+
+            <div class="tab-content">
+                <div class="guides-grid">
+                    @for (guide of guides; track guide.module) {
+                    <mat-card class="guide-card">
+                        <div class="guide-header" [style.background]="guide.color">
+                            <mat-icon>{{ guide.icon }}</mat-icon>
+                            <h3>{{ guide.module }}</h3>
+                        </div>
+                        <div class="guide-content">
+                            <h4>Pasos a seguir:</h4>
+                            <ol>
+                                @for (step of guide.steps; track $index) {
+                                <li>{{ step }}</li>
+                                }
+                            </ol>
+                        </div>
+                    </mat-card>
+                    }
+                </div>
+            </div>
+        </mat-tab>
+
+        <!-- Tips Tab -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>tips_and_updates</mat-icon>
+                <span>Consejos de Ahorro</span>
+            </ng-template>
+
+            <div class="tab-content">
+                @for (category of tipCategories; track category.name) {
+                <div class="tips-category">
+                    <h3 class="category-title">{{ category.name }}</h3>
+                    <div class="tips-grid">
+                        @for (tip of category.tips; track tip.title) {
+                        <mat-card class="tip-card">
+                            <div class="tip-icon" [style.background]="getImpactColor(tip.impact)">
+                                <mat-icon>{{ tip.icon }}</mat-icon>
+                            </div>
+                            <h4>{{ tip.title }}</h4>
+                            <p>{{ tip.description }}</p>
+                            <span class="impact-badge" [style.background]="getImpactColor(tip.impact)">
+                                {{ getImpactLabel(tip.impact) }}
+                            </span>
+                        </mat-card>
+                        }
+                    </div>
+                </div>
+                }
+            </div>
+        </mat-tab>
+
+        <!-- Glossary Tab -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>book</mat-icon>
+                <span>Glosario</span>
+            </ng-template>
+
+            <div class="tab-content">
+                <div class="glossary-list">
+                    @for (item of glossaryTerms; track item.term) {
+                    <mat-card class="glossary-card">
+                        <h3>{{ item.term }}</h3>
+                        <p class="definition">{{ item.definition }}</p>
+                        @if (item.example) {
+                        <p class="example">
+                            <mat-icon>lightbulb_outline</mat-icon>
+                            <strong>Ejemplo:</strong> {{ item.example }}
+                        </p>
+                        }
+                    </mat-card>
+                    }
+                </div>
+            </div>
+        </mat-tab>
+
+        <!-- Contact Tab -->
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>contact_support</mat-icon>
+                <span>Contacto</span>
+            </ng-template>
+
+            <div class="tab-content">
+                <div class="contact-container">
+                    <mat-card class="contact-card">
+                        <h3>
+                            <mat-icon>email</mat-icon>
+                            Formulario de Contacto
+                        </h3>
+                        <p class="contact-description">
+                            ¿Tienes alguna pregunta o necesitas ayuda? Completa el formulario y nos pondremos en
+                            contacto contigo pronto.
+                        </p>
+
+                        <form class="contact-form">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Nombre</mat-label>
+                                <input matInput [(ngModel)]="contactForm.name" name="name" required>
+                                <mat-icon matPrefix>person</mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input matInput type="email" [(ngModel)]="contactForm.email" name="email" required>
+                                <mat-icon matPrefix>email</mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Asunto</mat-label>
+                                <input matInput [(ngModel)]="contactForm.subject" name="subject">
+                                <mat-icon matPrefix>subject</mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field appearance="outline">
+                                <mat-label>Mensaje</mat-label>
+                                <textarea matInput rows="6" [(ngModel)]="contactForm.message" name="message"
+                                    required></textarea>
+                                <mat-icon matPrefix>message</mat-icon>
+                            </mat-form-field>
+
+                            <button mat-raised-button color="primary" (click)="submitContact()" type="button">
+                                <mat-icon>send</mat-icon>
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </mat-card>
+
+                    <mat-card class="support-info-card">
+                        <h3>
+                            <mat-icon>info</mat-icon>
+                            Información de Soporte
+                        </h3>
+
+                        <div class="info-item">
+                            <mat-icon>schedule</mat-icon>
+                            <div>
+                                <strong>Horario de Atención</strong>
+                                <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <mat-icon>email</mat-icon>
+                            <div>
+                                <strong>Email</strong>
+                                <p>soporte@powersense.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <mat-icon>phone</mat-icon>
+                            <div>
+                                <strong>Teléfono</strong>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <mat-icon>check_circle</mat-icon>
+                            <div>
+                                <strong>Estado del Sistema</strong>
+                                <p style="color: #28A745;">Todos los servicios operativos</p>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>

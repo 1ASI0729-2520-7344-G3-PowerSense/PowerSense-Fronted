@@ -1,4 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Estilos para diálogos de confirmación sin scroll */
+.confirm-dialog-no-scroll .mat-mdc-dialog-container {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.confirm-dialog-no-scroll .mat-mdc-dialog-surface {
+    overflow: visible !important;
+    max-height: none !important;
+    padding: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+}
+
+.confirm-dialog-no-scroll .mat-mdc-dialog-content {
+    max-height: none !important;
+    overflow: visible !important;
+}

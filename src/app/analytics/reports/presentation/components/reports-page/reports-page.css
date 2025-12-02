@@ -1,5 +1,4 @@
 .reports-page {
-	/* background matches layout content background */
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
@@ -9,15 +8,14 @@
 	font-family: 'Inter', 'Helvetica', 'Arial', sans-serif;
 	font-size: 24px;
 	font-weight: 700;
-	color: #1F2937; /* palette.text.primary */
-	margin: 0;
+	color: #1F2937;
 }
 
 .filters-card {
-	background: #FFFFFF; /* palette.background.paper */
-	border-radius: 8px; /* shape.borderRadius */
+	background: #FFFFFF;
+	border-radius: 8px;
 	box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
-	padding: 24px; /* spacing.lg */
+	padding: 24px;
 }
 
 .filters-row {
@@ -58,7 +56,7 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 12px;
-	color: #6B7280; /* typography.cardTitle color */
+	color: #6B7280;
 	font-weight: 600;
 }
 
@@ -66,11 +64,11 @@
 	width: 36px;
 	height: 36px;
 	border-radius: 8px;
-	background: #D1FAE5; /* status.success.background as thematic */
+	background: #D1FAE5;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #10B981; /* primary */
+	color: #10B981;
 }
 
 .kpi-title {
@@ -177,7 +175,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px dashed #E5E7EB; /* divider */
+	border: 1px dashed #E5E7EB;
 	border-radius: 8px;
 	color: #9CA3AF;
 }

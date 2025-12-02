@@ -96,10 +96,10 @@ export class ReportsPage {
 
   private async loadData(): Promise<void> {
     // Cargar KPIs
-    const kpisPromise = firstValueFrom(this.http.get<any>(`${this.baseUrl}/reports-kpis`));
-    const monthlyPromise = firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/reports-monthly`));
-    const departmentsPromise = firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/reports-departments`));
-    const historyPromise = firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/reports-history`));
+    const kpisPromise = firstValueFrom(this.http.get<any>(`${this.baseUrl}/analytics/reports/kpis`));
+    const monthlyPromise = firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/analytics/reports/monthly-comparison`));
+    const departmentsPromise = firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/analytics/reports/departments`));
+    const historyPromise = firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/analytics/reports/history`));
 
     const [kpis, monthlyData, departmentsData, historyData] = await Promise.all([
       kpisPromise,
@@ -124,11 +124,11 @@ export class ReportsPage {
 
     const departmentsNormalized = Array.isArray(departmentsData)
       ? departmentsData.map(d => ({
-          departmentId: String(d.departmentId),
-          departmentName: String(d.departmentName),
-          metric: String(d.metric),
-          value: Number(d.value)
-        }))
+        departmentId: String(d.departmentId),
+        departmentName: String(d.departmentName),
+        metric: String(d.metric),
+        value: Number(d.value)
+      }))
       : [];
     this.departments.set(departmentsNormalized);
 
@@ -136,11 +136,11 @@ export class ReportsPage {
     this.history.set(
       Array.isArray(historyData)
         ? historyData.map(h => ({
-            date: String(h.date),
-            name: String(h.name),
-            type: String(h.type),
-            variation: Number(h.variationPct ?? 0)
-          }))
+          date: String(h.date),
+          name: String(h.name),
+          type: String(h.type),
+          variation: Number(h.variationPct ?? 0)
+        }))
         : []
     );
 

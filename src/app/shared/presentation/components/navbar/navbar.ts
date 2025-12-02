@@ -24,13 +24,12 @@ export class Navbar {
     '/scheduling': 'Programación',
     '/reports': 'Reportes',
     '/alerts': 'Alertas',
-    '/settings': 'Configuración',
     '/help': 'Ayuda'
   };
 
   showMenu = false;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
   get currentTitle(): string {
     const path = this.router.url.split('?')[0];

@@ -1,0 +1,204 @@
+/* ============================================
+   PANEL LATERAL - REGLAS INTELIGENTES (MEJORADO)
+   ============================================ */
+.rules-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #F0F0F0;
+}
+
+.rules-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #EAEAEA;
+}
+
+.rules-header .right-rail-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rules-header .right-rail-title mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    color: #4A90E2;
+}
+
+.add-rule-button {
+    color: #4A90E2 !important;
+    background: rgba(74, 144, 226, 0.08) !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.add-rule-button:hover {
+    background: rgba(74, 144, 226, 0.15) !important;
+    transform: scale(1.05);
+}
+
+.add-rule-button mat-icon {
+    color: #4A90E2 !important;
+    font-size: 22px !important;
+    width: 22px !important;
+    height: 22px !important;
+}
+
+.rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rule-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px solid #E8E8E8;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.rule-item:hover {
+    background: #F7F9FC;
+    border-color: #4A90E2;
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.1);
+    transform: translateY(-2px);
+}
+
+.rule-icon-container {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.rule-icon-container mat-icon {
+    font-size: 20px !important;
+    width: 20px !important;
+    height: 20px !important;
+    color: white !important;
+}
+
+/* Iconos específicos por tipo de regla */
+.rule-icon-night_mode {
+    background: linear-gradient(135deg, #5E35B1 0%, #4527A0 100%) !important;
+}
+
+.rule-icon-energy_saving {
+    background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%) !important;
+}
+
+.rule-icon-away_mode {
+    background: linear-gradient(135deg, #FB8C00 0%, #EF6C00 100%) !important;
+}
+
+.rule-icon-eco_mode {
+    background: linear-gradient(135deg, #00897B 0%, #00695C 100%) !important;
+}
+
+.rule-icon-comfort_mode {
+    background: linear-gradient(135deg, #E53935 0%, #C62828 100%) !important;
+}
+
+.rule-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.rule-main {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rule-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    color: #8A8A8A !important;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Botón Ver Más para Reglas */
+.view-more-rules {
+    margin-top: 16px;
+    text-align: center;
+}
+
+.view-more-rules-button {
+    width: 100%;
+    color: #4A90E2 !important;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 8px !important;
+    padding: 10px !important;
+    background: rgba(74, 144, 226, 0.05) !important;
+}
+
+.view-more-rules-button:hover {
+    background: rgba(74, 144, 226, 0.12) !important;
+    transform: translateY(-1px);
+}
+
+.view-more-rules-button mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    transition: transform 0.3s ease;
+}
+
+.view-more-rules-button:hover mat-icon {
+    transform: translateY(2px);
+}
+
+/* Estado vacío */
+.rules-empty-state {
+    text-align: center;
+    padding: 32px 16px;
+    color: #8A8A8A;
+}
+
+.rules-empty-state mat-icon {
+    font-size: 48px !important;
+    width: 48px !important;
+    height: 48px !important;
+    color: #BDBDBD !important;
+    margin-bottom: 12px;
+}
+
+.rules-empty-state p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+}

@@ -1,0 +1,62 @@
+<mat-card class="alert-card" [class.acknowledged]="configurableAlert?.acknowledged">
+    <div class="alert-header">
+        <div class="alert-icon" [style.background]="getColor()">
+            @if (isDynamic) {
+            <span class="emoji-icon">{{ dynamicAlert?.icon }}</span>
+            } @else {
+            <mat-icon>{{ getIcon() }}</mat-icon>
+            }
+        </div>
+
+        <div class="alert-info">
+            @if (!isDynamic && configurableAlert) {
+            <div class="alert-type">
+                <span class="type-label">{{ translateType(configurableAlert.type) }}</span>
+                <mat-chip class="severity-chip" [style.background]="getColor()">
+                    {{ translateSeverity(configurableAlert.severity) }}
+                </mat-chip>
+            </div>
+            }
+
+            @if (!isDynamic && configurableAlert && !configurableAlert.acknowledged) {
+            <mat-chip class="new-badge">Nueva</mat-chip>
+            }
+        </div>
+    </div>
+
+    <div class="alert-content">
+        <p class="alert-message">{{ alert.message }}</p>
+
+        @if (!isDynamic && configurableAlert?.threshold) {
+        <div class="alert-threshold">
+            <mat-icon>speed</mat-icon>
+            <span>Umbral: {{ configurableAlert?.threshold }} W</span>
+        </div>
+        }
+
+        <div class="alert-footer">
+            <span class="alert-time">
+                <mat-icon>schedule</mat-icon>
+                @if (isDynamic && dynamicAlert) {
+                {{ formatDate(dynamicAlert.timestamp) }}
+                } @else if (configurableAlert) {
+                {{ formatDate(configurableAlert.createdAt) }}
+                }
+            </span>
+
+            @if (!isDynamic && configurableAlert) {
+            @if (configurableAlert.acknowledged) {
+            <span class="acknowledged-label">
+                <mat-icon>check_circle</mat-icon>
+                Reconocida {{ formatDate(configurableAlert.acknowledgedAt!) }}
+            </span>
+            } @else {
+            <button mat-stroked-button color="primary" (click)="onAcknowledge()">
+                <mat-icon>done</mat-icon>
+                Marcar como vista
+            </button>
+            }
+            }
+        </div>
+    </div>
+</mat-card>

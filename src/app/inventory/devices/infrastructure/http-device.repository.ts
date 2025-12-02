@@ -7,9 +7,9 @@ import { API_BASE_URL } from '../../../shared/infrastructure/api.config';
 
 @Injectable({ providedIn: 'root' })
 export class HttpDeviceRepository implements DeviceRepository {
-  private readonly baseUrl = `${API_BASE_URL}/devices`;
+  private readonly baseUrl = `${API_BASE_URL}/inventory/devices`;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   // Trae los dispositivos desde la API y aplica filtros desde la app
   async list(query?: DeviceQuery): Promise<Device[]> {

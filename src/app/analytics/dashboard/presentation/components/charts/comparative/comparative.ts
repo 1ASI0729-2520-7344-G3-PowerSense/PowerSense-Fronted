@@ -38,9 +38,9 @@ export class Comparative {
   }
 
   async loadMonthly(): Promise<void> {
-    const data = await firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/reports-monthly`));
+    const data = await firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/analytics/reports/monthly-comparison`));
     this.monthlyNormalized = Array.isArray(data)
-      ? data.map(m => ({ month: String(m.month), y2023: Number(m.y2023), y2024: Number(m.y2024) }))
+      ? data.filter(m => typeof m.y2023 === 'number' && typeof m.y2024 === 'number').map(m => ({ month: String(m.month), y2023: Number(m.y2023), y2024: Number(m.y2024) }))
       : [];
     this.updateSeries();
   }

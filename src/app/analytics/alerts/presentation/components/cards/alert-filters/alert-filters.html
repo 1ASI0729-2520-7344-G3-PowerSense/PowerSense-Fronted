@@ -1,0 +1,55 @@
+<mat-card class="filters-card">
+    <div class="filters-header">
+        <h3>
+            <mat-icon>filter_list</mat-icon>
+            Filtros
+        </h3>
+        <button mat-button (click)="clearFilters()">
+            <mat-icon>clear</mat-icon>
+            Limpiar
+        </button>
+    </div>
+
+    <div class="filters-grid">
+        <!-- Búsqueda -->
+        <mat-form-field appearance="outline" class="search-field">
+            <mat-label>Buscar</mat-label>
+            <input matInput [(ngModel)]="searchText" (ngModelChange)="onFilterChange()"
+                placeholder="Buscar en mensajes...">
+            <mat-icon matPrefix>search</mat-icon>
+        </mat-form-field>
+
+        <!-- Tipo -->
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de Alerta</mat-label>
+            <mat-select [(ngModel)]="selectedType" (ngModelChange)="onFilterChange()">
+                @for (type of types; track type.value) {
+                <mat-option [value]="type.value">{{ type.label }}</mat-option>
+                }
+            </mat-select>
+            <mat-icon matPrefix>category</mat-icon>
+        </mat-form-field>
+
+        <!-- Severidad -->
+        <mat-form-field appearance="outline">
+            <mat-label>Severidad</mat-label>
+            <mat-select [(ngModel)]="selectedSeverity" (ngModelChange)="onFilterChange()">
+                @for (severity of severities; track severity.value) {
+                <mat-option [value]="severity.value">{{ severity.label }}</mat-option>
+                }
+            </mat-select>
+            <mat-icon matPrefix>priority_high</mat-icon>
+        </mat-form-field>
+
+        <!-- Estado -->
+        <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="selectedAcknowledged" (ngModelChange)="onFilterChange()">
+                @for (option of acknowledgedOptions; track option.value) {
+                <mat-option [value]="option.value">{{ option.label }}</mat-option>
+                }
+            </mat-select>
+            <mat-icon matPrefix>check_circle</mat-icon>
+        </mat-form-field>
+    </div>
+</mat-card>

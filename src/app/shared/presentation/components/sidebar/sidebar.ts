@@ -22,11 +22,10 @@ export class Sidebar {
     { label: 'Programación', icon: '', route: '/scheduling' },
     { label: 'Reportes', icon: '', route: '/reports' },
     { label: 'Alertas', icon: '', route: '/alerts' },
-    { label: 'Configuración', icon: '', route: '/settings' },
     { label: 'Ayuda', icon: '', route: '/help' }
   ];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
   isActive(route: string): boolean {
     return this.router.url.startsWith(route);

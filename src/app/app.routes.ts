@@ -5,20 +5,41 @@ import { LayoutComponent } from './shared/presentation/components/layout.compone
 import { DevicesPage } from './inventory/devices/presentation/components/devices-page/devices-page';
 import { SchedulingPage } from './inventory/scheduling/presentation/components/scheduling-page/scheduling-page';
 import { ReportsPage } from './analytics/reports/presentation/components/reports-page/reports-page';
+import { AlertsPage } from './analytics/alerts/presentation/components/alerts-page/alerts-page';
+import { HelpPage } from './support/help/presentation/components/help-page/help-page';
+import { LoginComponent } from './auth/presentation/components/login/login';
+import { RegisterComponent } from './auth/presentation/components/register/register';
+import { authGuardSync } from './auth/guards/auth.guard';
+import { guestGuardSync } from './auth/guards/guest.guard';
+
 
 export const routes: Routes = [
+  // Rutas públicas (solo accesibles si NO estás logueado)
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [guestGuardSync]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [guestGuardSync]
+  },
+
+  // Rutas protegidas (requieren autenticación)
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [authGuardSync], // <-- Guard aplicado aquí
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardOverview },
       { path: 'devices', component: DevicesPage },
       { path: 'scheduling', component: SchedulingPage },
       { path: 'reports', component: ReportsPage },
-      // { path: 'alerts', component: AlertsComponent },
+      { path: 'alerts', component: AlertsPage },
+      { path: 'help', component: HelpPage },
       // { path: 'settings', component: SettingsComponent },
-      // { path: 'help', component: HelpComponent },
     ]
   },
   { path: 'upgrade', component: UpgradeProComponent }

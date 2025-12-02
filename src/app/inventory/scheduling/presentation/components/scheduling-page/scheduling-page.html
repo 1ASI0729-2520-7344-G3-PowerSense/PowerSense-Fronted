@@ -15,21 +15,14 @@
     <div class="filters-bar">
       <mat-form-field class="search-field" appearance="outline">
         <mat-icon matPrefix>search</mat-icon>
-        <input
-          matInput
-          placeholder="Buscar por dispositivo..."
-          [(ngModel)]="search"
-          (ngModelChange)="onFiltersChange()"
-        />
+        <input matInput placeholder="Buscar por dispositivo..." [(ngModel)]="search"
+          (ngModelChange)="onFiltersChange()" />
       </mat-form-field>
 
       <mat-form-field class="room-filter" appearance="outline">
         <mat-icon matPrefix>meeting_room</mat-icon>
-        <mat-select
-          [(ngModel)]="selectedRoom"
-          (selectionChange)="onFiltersChange()"
-          placeholder="Filtrar por habitación"
-        >
+        <mat-select [(ngModel)]="selectedRoom" (selectionChange)="onFiltersChange()"
+          placeholder="Filtrar por habitación">
           <mat-option *ngFor="let room of rooms" [value]="room">
             {{ room }}
           </mat-option>
@@ -46,12 +39,8 @@
       </div>
 
       <!-- Tarjeta de cada programación -->
-      <div 
-        class="program-card" 
-        *ngFor="let schedule of visibleSchedules" 
-        [class.disabled]="!schedule.enabled"
-        [attr.data-category]="getDeviceCategory(schedule.deviceName)"
-      >
+      <div class="program-card" *ngFor="let schedule of visibleSchedules" [class.disabled]="!schedule.enabled"
+        [attr.data-category]="getDeviceCategory(schedule.deviceName)">
         <!-- Columna 1: Información del dispositivo -->
         <div class="device-info">
           <div class="device-icon-container">
@@ -68,12 +57,8 @@
 
         <!-- Columna 2: Detalles de horarios -->
         <div class="schedule-details">
-          <div 
-            class="schedule-block"
-            *ngFor="let config of schedule.schedules"
-            [class.on]="config.action === 'on'"
-            [class.off]="config.action === 'off'"
-          >
+          <div class="schedule-block" *ngFor="let config of schedule.schedules" [class.on]="config.action === 'on'"
+            [class.off]="config.action === 'off'">
             <div class="schedule-status">
               <mat-icon>{{ config.action === 'on' ? 'power_settings_new' : 'power_off' }}</mat-icon>
               <span class="schedule-status-text">{{ config.action === 'on' ? 'Encendido' : 'Apagado' }}</span>
@@ -88,11 +73,8 @@
           <button mat-icon-button [matMenuTriggerFor]="menu" class="more-button">
             <mat-icon>more_vert</mat-icon>
           </button>
-          <mat-slide-toggle
-            [checked]="schedule.enabled"
-            (change)="toggleScheduleEnabled(schedule)"
-            color="primary"
-          ></mat-slide-toggle>
+          <mat-slide-toggle [checked]="schedule.enabled" (change)="toggleScheduleEnabled(schedule)"
+            color="primary"></mat-slide-toggle>
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="openEditDialog(schedule)">
               <mat-icon>edit</mat-icon>
@@ -128,13 +110,9 @@
     <!-- Programación Rápida -->
     <div class="quick-schedule-section">
       <h2 class="right-rail-title">Programación Rápida</h2>
-      
+
       <div class="quick-presets">
-        <div
-          class="quick-action-card"
-          *ngFor="let preset of quickPresets"
-          (click)="applyQuickPreset(preset.id)"
-        >
+        <div class="quick-action-card" *ngFor="let preset of quickPresets" (click)="applyQuickPreset(preset.id)">
           <div class="quick-icon-container">
             <mat-icon>{{ preset.icon }}</mat-icon>
           </div>
@@ -149,7 +127,7 @@
     <!-- Estadísticas -->
     <div class="statistics-card">
       <h2 class="right-rail-title">Estadísticas</h2>
-      
+
       <div class="stat-list">
         <div class="stat-list-item">
           <span class="stat-label">Dispositivos programados</span>
@@ -173,22 +151,19 @@
     <div class="rules-card">
       <div class="rules-header">
         <h2 class="right-rail-title">Reglas Inteligentes</h2>
-        <button mat-icon-button class="add-rule-button">
+        <button mat-icon-button class="add-rule-button" (click)="openCreateRuleDialog()">
           <mat-icon>add</mat-icon>
         </button>
       </div>
-      
+
       <div class="rules-list">
         <div class="rule-item" *ngFor="let rule of visibleRules">
           <div class="rule-content">
             <div class="rule-main">{{ rule.name }}</div>
             <div class="rule-subtitle">{{ rule.description }}</div>
           </div>
-          <mat-slide-toggle
-            [checked]="rule.enabled"
-            (change)="toggleRuleEnabled(rule)"
-            color="primary"
-          ></mat-slide-toggle>
+          <mat-slide-toggle [checked]="rule.enabled" (change)="toggleRuleEnabled(rule)"
+            color="primary"></mat-slide-toggle>
         </div>
       </div>
 
@@ -202,4 +177,3 @@
     </div>
   </div>
 </div>
-

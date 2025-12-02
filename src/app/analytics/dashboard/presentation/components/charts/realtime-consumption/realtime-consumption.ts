@@ -38,10 +38,12 @@ export class RealtimeConsumption {
     // Endpoint esperado (necesario en db.json): /realtime-consumption?period=day|week|month
     // Estructura esperada: [{ name: 'HH:mm'| 'Día' | 'Mes', value: number }, ...]
     try {
-      const data = await firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/realtime-consumption`, {
+      const data = await firstValueFrom(this.http.get<any[]>(`${this.baseUrl}/analytics/reports/realtime-consumption`, {
         params: { period: this.selectedPeriod }
       }));
-      this.results = Array.isArray(data) ? data : [];
+      this.results = Array.isArray(data)
+        ? data.filter(d => typeof d.value === 'number' && !isNaN(d.value))
+        : [];
     } catch {
       this.results = [];
     }

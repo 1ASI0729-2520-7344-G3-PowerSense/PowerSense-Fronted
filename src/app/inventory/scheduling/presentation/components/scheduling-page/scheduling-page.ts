@@ -22,7 +22,10 @@ import { ListScheduleRulesUseCase } from '../../../application/list-schedule-rul
 import { ToggleScheduleRuleUseCase } from '../../../application/toggle-schedule-rule.usecase';
 import { ApplyQuickScheduleUseCase } from '../../../application/apply-quick-schedule.usecase';
 import { UpdateScheduleUseCase } from '../../../application/update-schedule.usecase';
+import { CreateScheduleRuleUseCase } from '../../../application/create-schedule-rule.usecase';
 import { EditScheduleDialog } from '../dialogs/edit-schedule-dialog/edit-schedule-dialog';
+import { CreateRuleDialog } from '../dialogs/create-rule-dialog/create-rule-dialog';
+import { ConfirmDialogComponent } from '../../../../../shared/presentation/components/dialogs/confirm-dialog.component';
 
 @Component({
   selector: 'app-scheduling-page',
@@ -94,6 +97,7 @@ export class SchedulingPage {
     private readonly getStats: GetScheduleStatsUseCase,
     private readonly listRules: ListScheduleRulesUseCase,
     private readonly toggleRule: ToggleScheduleRuleUseCase,
+    private readonly createRule: CreateScheduleRuleUseCase,
     private readonly applyQuickSchedule: ApplyQuickScheduleUseCase,
     private readonly dialog: MatDialog
   ) {
@@ -142,7 +146,25 @@ export class SchedulingPage {
 
   // Eliminar una programación
   async deleteScheduleItem(schedule: Schedule): Promise<void> {
-    if (!confirm(`¿Eliminar la programación de "${schedule.deviceName}"?`)) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '600px',
+      minHeight: '250px',
+      height: 'auto',
+      maxWidth: '90vw',
+      maxHeight: '90vh',
+      autoFocus: false,
+      panelClass: 'confirm-dialog-no-scroll',
+      data: {
+        title: 'Eliminar Programación',
+        message: `¿Estás seguro de que deseas eliminar la programación de "${schedule.deviceName}"? Esta acción no se puede deshacer.`,
+        confirmText: 'Eliminar',
+        cancelText: 'Cancelar',
+        icon: 'delete'
+      }
+    });
+
+    const confirmed = await dialogRef.afterClosed().toPromise();
+    if (!confirmed) {
       return;
     }
 
@@ -183,7 +205,25 @@ export class SchedulingPage {
     const preset = this.quickPresets.find(p => p.id === presetId);
     if (!preset) return;
 
-    if (!confirm(`¿Aplicar programación "${preset.name}" a los dispositivos?`)) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '600px',
+      minHeight: '250px',
+      height: 'auto',
+      maxWidth: '90vw',
+      maxHeight: '90vh',
+      autoFocus: false,
+      panelClass: 'confirm-dialog-no-scroll',
+      data: {
+        title: 'Aplicar Programación Rápida',
+        message: `¿Deseas aplicar la programación "${preset.name}" a los dispositivos seleccionados? ${preset.description}`,
+        confirmText: 'Aplicar',
+        cancelText: 'Cancelar',
+        icon: preset.icon
+      }
+    });
+
+    const confirmed = await dialogRef.afterClosed().toPromise();
+    if (!confirmed) {
       return;
     }
 
@@ -247,30 +287,30 @@ export class SchedulingPage {
   // Obtener ícono del dispositivo
   getDeviceIcon(deviceName: string): string {
     const name = deviceName.toLowerCase();
-    
+
     // Iluminación
     if (name.includes('lámpara') || name.includes('luz')) return 'lightbulb';
-    
+
     // Climatización
     if (name.includes('aire') || name.includes('ac') || name.includes('acondicionado')) return 'ac_unit';
     if (name.includes('calefacción') || name.includes('calefactor')) return 'whatshot';
     if (name.includes('ventilador')) return 'air';
-    
+
     // Entretenimiento
     if (name.includes('tv') || name.includes('televisor')) return 'tv';
     if (name.includes('consola') || name.includes('videojuego')) return 'videogame_asset';
-    
+
     // Cocina
     if (name.includes('refrigerador') || name.includes('nevera')) return 'kitchen';
     if (name.includes('microondas')) return 'microwave';
-    
+
     // Limpieza
     if (name.includes('lavadora')) return 'local_laundry_service';
-    
+
     // Oficina
     if (name.includes('computadora') || name.includes('pc') || name.includes('ordenador')) return 'computer';
     if (name.includes('impresora')) return 'print';
-    
+
     // Genérico
     return 'power';
   }
@@ -305,6 +345,7 @@ export class SchedulingPage {
       width: '650px',
       maxWidth: '95vw',
       maxHeight: '90vh',
+      panelClass: 'confirm-dialog-no-scroll',
       data: { schedule },
       disableClose: false
     });
@@ -319,6 +360,28 @@ export class SchedulingPage {
           await this.refresh();
         } catch (error) {
           console.error('Error al actualizar programación:', error);
+        }
+      }
+    });
+  }
+
+  // Abrir diálogo para crear nueva regla inteligente
+  openCreateRuleDialog(): void {
+    const dialogRef = this.dialog.open(CreateRuleDialog, {
+      width: '650px',
+      maxWidth: '95vw',
+      height: 'auto',
+      maxHeight: '90vh',
+      panelClass: 'confirm-dialog-no-scroll'
+    });
+
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if (result) {
+        try {
+          await this.createRule.execute(result);
+          await this.refresh();
+        } catch (error) {
+          console.error('Error al crear regla:', error);
         }
       }
     });
