@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,8 +19,7 @@ import { AuthService } from '../../../application/auth.service';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule,
-    RouterLink
+    MatIconModule
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'
@@ -65,6 +64,11 @@ export class LoginComponent {
 
   get password() {
     return this.loginForm.get('password');
+  }
+
+  navigateToRegister(event: Event): void {
+    event.preventDefault();
+    this.router.navigate(['/register']);
   }
 }
 
