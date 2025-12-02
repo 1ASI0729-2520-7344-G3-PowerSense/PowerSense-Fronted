@@ -1,19 +1,30 @@
 <nav class="navbar-container">
+  <!-- Título dinámico mostrado en la barra -->
   <div class="navbar-title">
     {{ currentTitle }}
   </div>
+
   <div class="navbar-actions">
+    <!-- Botón de notificaciones con contador -->
     <button class="navbar-icon-btn" aria-label="Notificaciones">
       <span class="navbar-bell">🔔</span>
       <span class="navbar-badge">3</span>
     </button>
+
+    <!-- Avatar del usuario y menú desplegable -->
     <div class="navbar-avatar-wrapper" (click)="toggleMenu()">
+
+      <!-- Si el usuario tiene imagen, mostrarla -->
       <ng-container *ngIf="user.avatarUrl; else initials">
         <img [src]="user.avatarUrl" alt="Avatar" class="navbar-avatar" />
       </ng-container>
+
+      <!-- Si no tiene imagen, mostrar iniciales -->
       <ng-template #initials>
         <div class="navbar-avatar">{{ user.initials }}</div>
       </ng-template>
+
+      <!-- Menú desplegable visible solo si showMenu es true -->
       <div class="navbar-menu" *ngIf="showMenu" (mouseleave)="closeMenu()">
         <a class="navbar-menu-item" href="#">Ver perfil</a>
         <a class="navbar-menu-item" href="#">Cerrar sesión</a>
